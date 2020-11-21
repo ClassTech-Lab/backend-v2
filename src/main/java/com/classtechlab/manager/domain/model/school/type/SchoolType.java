@@ -1,4 +1,4 @@
-package com.classtechlab.manager.domain.model.schooltype;
+package com.classtechlab.manager.domain.model.school.type;
 
 public class SchoolType {
     private final SchoolTypeId id;

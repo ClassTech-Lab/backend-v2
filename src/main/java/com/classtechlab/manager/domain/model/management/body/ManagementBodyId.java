@@ -1,15 +1,15 @@
-package com.classtechlab.manager.domain.model.schooltype;
+package com.classtechlab.manager.domain.model.management.body;
 
 import java.util.UUID;
 
-public class SchoolTypeId {
+public class ManagementBodyId {
     private final UUID value;
 
-    public SchoolTypeId(final UUID value) {
+    public ManagementBodyId(final UUID value) {
         this.value = value;
     }
 
-    public SchoolTypeId() {
+    public ManagementBodyId() {
         this(UUID.randomUUID());
     }
 
@@ -18,7 +18,7 @@ public class SchoolTypeId {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        final SchoolTypeId that = (SchoolTypeId) o;
+        final ManagementBodyId that = (ManagementBodyId) o;
 
         return value.equals(that.value);
     }
