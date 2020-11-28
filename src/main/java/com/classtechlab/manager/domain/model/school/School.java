@@ -1,29 +1,25 @@
 package com.classtechlab.manager.domain.model.school;
 
-import com.classtechlab.manager.domain.model.school.managementBody.ManagementBody;
-import com.classtechlab.manager.domain.model.school.type.Type;
-
-import java.util.Collections;
-import java.util.Set;
+import com.classtechlab.manager.domain.model.school.type.TypeId;
 
 public class School {
     private final SchoolId id;
-    private final Set<Type> types;
-    private final ManagementBody managementBody;
-    private final Organization organization;
+    private final SchoolBody body;
 
-    public School(final SchoolId id, final Set<Type> types, final ManagementBody managementBody, final Organization organization) {
+    private School(final SchoolId id, final SchoolBody body) {
         this.id = id;
-        this.types = Collections.unmodifiableSet(types);
-        this.managementBody = managementBody;
-        this.organization = organization;
+        this.body = body;
     }
 
-    public School(final Set<Type> types, final ManagementBody managementBody, final Organization organization) {
-        this(new SchoolId(), types, managementBody, organization);
+    public School(final SchoolBody body) {
+        this(new SchoolId(), body);
     }
 
-    public boolean has(final Type type) {
-        return this.types.contains(type);
+    public School add(final TypeId typeId) {
+        return new School(this.id, this.body.add(typeId));
+    }
+
+    public boolean has(final TypeId typeId) {
+        return this.body.has(typeId);
     }
 }

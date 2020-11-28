@@ -11,7 +11,7 @@ public class Type {
     private final TypeName name;
     private final Set<GradeId> gradeIds;
 
-    public Type(final TypeId id, final TypeName name, final Set<GradeId> gradeIds) {
+    private Type(final TypeId id, final TypeName name, final Set<GradeId> gradeIds) {
         this.id = id;
         this.name = name;
         this.gradeIds = Collections.unmodifiableSet(gradeIds);

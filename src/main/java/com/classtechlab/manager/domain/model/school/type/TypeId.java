@@ -5,7 +5,7 @@ import java.util.UUID;
 public class TypeId {
     private final UUID value;
 
-    public TypeId(final UUID value) {
+    private TypeId(final UUID value) {
         this.value = value;
     }
 
