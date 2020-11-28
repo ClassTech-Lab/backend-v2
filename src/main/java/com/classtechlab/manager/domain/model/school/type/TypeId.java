@@ -1,15 +1,15 @@
-package com.classtechlab.manager.domain.model.department;
+package com.classtechlab.manager.domain.model.school.type;
 
 import java.util.UUID;
 
-public class DepartmentId {
+public class TypeId {
     private final UUID value;
 
-    public DepartmentId(final UUID value) {
+    public TypeId(final UUID value) {
         this.value = value;
     }
 
-    public DepartmentId() {
+    public TypeId() {
         this(UUID.randomUUID());
     }
 
@@ -18,7 +18,7 @@ public class DepartmentId {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        final DepartmentId that = (DepartmentId) o;
+        final TypeId that = (TypeId) o;
 
         return value.equals(that.value);
     }

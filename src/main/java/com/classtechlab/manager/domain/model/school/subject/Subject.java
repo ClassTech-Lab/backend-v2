@@ -1,4 +1,4 @@
-package com.classtechlab.manager.domain.model.subject;
+package com.classtechlab.manager.domain.model.school.subject;
 
 public class Subject {
     private final SubjectId id;

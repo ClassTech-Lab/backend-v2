@@ -1,15 +1,14 @@
-package com.classtechlab.manager.domain.model.grade;
+package com.classtechlab.manager.domain.model.school.subject;
 
 import java.util.UUID;
 
-public class GradeId {
+public class SubjectId {
     private final UUID value;
 
-    public GradeId(final UUID value) {
+    public SubjectId(final UUID value) {
         this.value = value;
     }
-
-    public GradeId() {
+    public SubjectId() {
         this(UUID.randomUUID());
     }
 
@@ -18,9 +17,9 @@ public class GradeId {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        final GradeId gradeId = (GradeId) o;
+        final SubjectId subjectId = (SubjectId) o;
 
-        return value.equals(gradeId.value);
+        return value.equals(subjectId.value);
     }
 
     @Override

@@ -1,9 +1,9 @@
 package com.classtechlab.manager.domain.model.school.type;
 
-public class SchoolTypeName {
+public class TypeName {
     private final String value;
 
-    public SchoolTypeName(final String value) {
+    public TypeName(final String value) {
         this.value = value;
     }
 }

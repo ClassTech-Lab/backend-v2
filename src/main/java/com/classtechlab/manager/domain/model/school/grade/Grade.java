@@ -1,4 +1,4 @@
-package com.classtechlab.manager.domain.model.grade;
+package com.classtechlab.manager.domain.model.school.grade;
 
 public class Grade {
     private final GradeId id;

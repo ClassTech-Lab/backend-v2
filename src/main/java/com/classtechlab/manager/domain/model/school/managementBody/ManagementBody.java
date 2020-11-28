@@ -1,4 +1,4 @@
-package com.classtechlab.manager.domain.model.management.body;
+package com.classtechlab.manager.domain.model.school.managementBody;
 
 public class ManagementBody {
     private final ManagementBodyId id;

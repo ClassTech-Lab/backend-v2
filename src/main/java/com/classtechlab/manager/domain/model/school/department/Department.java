@@ -1,5 +1,8 @@
-package com.classtechlab.manager.domain.model.department;
+package com.classtechlab.manager.domain.model.school.department;
 
+/**
+ * 学科
+ */
 public class Department {
     private final DepartmentId id;
     private final DepartmentName name;
