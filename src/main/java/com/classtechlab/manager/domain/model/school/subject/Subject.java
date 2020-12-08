@@ -1,5 +1,8 @@
 package com.classtechlab.manager.domain.model.school.subject;
 
+/**
+ * 科目
+ */
 public class Subject {
     private final SubjectId id;
     private final SubjectName name;

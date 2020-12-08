@@ -1,8 +1,8 @@
 package com.classtechlab.manager.application.repository.school;
 
-import com.classtechlab.manager.domain.model.school.School;
-import com.classtechlab.manager.domain.model.school.SchoolId;
+import com.classtechlab.manager.domain.model.school.Organization;
+import com.classtechlab.manager.domain.model.school.OrganizationId;
 
 public interface SchoolSaveRepository {
-    SchoolId save(final School school);
+    OrganizationId save(final Organization organization);
 }

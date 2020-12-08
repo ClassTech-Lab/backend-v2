@@ -4,15 +4,15 @@ import com.classtechlab.manager.application.service.practice.PracticeCreateServi
 import com.classtechlab.manager.application.service.school.SchoolCreateService;
 import com.classtechlab.manager.domain.model.practice.PracticeId;
 import com.classtechlab.manager.domain.model.practice.content.PracticeContent;
-import com.classtechlab.manager.domain.model.school.SchoolBody;
-import com.classtechlab.manager.domain.model.school.SchoolId;
+import com.classtechlab.manager.domain.model.school.Organization;
+import com.classtechlab.manager.domain.model.school.OrganizationId;
 
 public class PracticeCreateCoordinator {
     private PracticeCreateService practiceCreateService;
     private SchoolCreateService schoolCreateService;
 
-    public PracticeId create(final PracticeContent content, final SchoolBody schoolBody) {
-        final SchoolId schoolId = schoolCreateService.create(schoolBody);
-        return practiceCreateService.create(content, schoolId);
+    public PracticeId create(final PracticeContent content, final Organization organization) {
+        final OrganizationId organizationId = schoolCreateService.create(organization);
+        return practiceCreateService.create(content);
     }
 }

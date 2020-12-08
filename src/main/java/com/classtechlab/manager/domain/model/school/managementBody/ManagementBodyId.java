@@ -2,6 +2,9 @@ package com.classtechlab.manager.domain.model.school.managementBody;
 
 import java.util.UUID;
 
+/**
+ * 運営母体ID
+ */
 public class ManagementBodyId {
     private final UUID value;
 

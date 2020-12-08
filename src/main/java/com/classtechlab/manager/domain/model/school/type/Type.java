@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 学校種別
+ */
 public class Type {
     private final TypeId id;
     private final TypeName name;

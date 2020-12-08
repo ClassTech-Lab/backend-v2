@@ -2,6 +2,9 @@ package com.classtechlab.manager.domain.model.school.type;
 
 import java.util.UUID;
 
+/**
+ * 学科種別ID
+ */
 public class TypeId {
     private final UUID value;
 

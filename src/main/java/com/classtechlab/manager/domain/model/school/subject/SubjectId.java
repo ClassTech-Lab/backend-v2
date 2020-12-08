@@ -2,6 +2,9 @@ package com.classtechlab.manager.domain.model.school.subject;
 
 import java.util.UUID;
 
+/**
+ * 科目ID
+ */
 public class SubjectId {
     private final UUID value;
 

@@ -2,6 +2,9 @@ package com.classtechlab.manager.domain.model.school.grade;
 
 import java.util.UUID;
 
+/**
+ * 学年ID
+ */
 public class GradeId {
     private final UUID value;
 
