@@ -1,15 +1,15 @@
-package com.classtechlab.manager.domain.type.id;
+package com.classtechlab.manager.domain.model.tool;
 
 import java.util.UUID;
 
-public class Id {
+public class ToolId {
     private final UUID value;
 
-    public Id() {
+    public ToolId() {
         this.value = UUID.randomUUID();
     }
 
-    public boolean equals(final Id other) {
+    boolean isEqualTo(final ToolId other) {
         return this.value.equals(other.value);
     }
 }
