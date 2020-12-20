@@ -5,12 +5,12 @@ import java.util.UUID;
 public class ToolId {
     UUID value;
 
-    ToolId() {
-        this(UUID.randomUUID());
-    }
-
     ToolId(final UUID value) {
         this.value = value;
+    }
+
+    ToolId() {
+        this(UUID.randomUUID());
     }
 
     boolean isEqualTo(final ToolId other) {
