@@ -1,10 +1,11 @@
 package com.classtechlab.manager.domain.model.category;
 
+import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 
 import java.util.UUID;
 
-public class Category {
+public class Category implements Identifiable<Category> {
     CategoryId id;
     Name name;
 
@@ -18,6 +19,11 @@ public class Category {
 
     public PlainObject toPlainObject() {
         return new PlainObject();
+    }
+
+    @Override
+    public boolean isEqualTo(final Category other) {
+        return this.id.isEqualTo(other.id);
     }
 
     public class PlainObject {
