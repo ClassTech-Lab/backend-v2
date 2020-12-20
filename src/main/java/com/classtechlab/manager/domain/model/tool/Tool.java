@@ -7,13 +7,13 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.UUID;
 
 public class Tool implements Identifiable<Tool> {
-    ToolId id;
-    Name name;
+    private ToolId id;
+    private Name name;
 
     private Tool() {
     }
 
-    Tool(final Name name) {
+    private Tool(final Name name) {
         this.id = new ToolId();
         this.name = name;
     }

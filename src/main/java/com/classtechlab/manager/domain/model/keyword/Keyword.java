@@ -7,8 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.UUID;
 
 public class Keyword implements Identifiable<Keyword> {
-    KeywordId id;
-    Name name;
+    private KeywordId id;
+    private Name name;
 
     private Keyword() {
     }

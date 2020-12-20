@@ -3,7 +3,7 @@ package com.classtechlab.manager.domain.model.tool;
 import java.util.UUID;
 
 public class ToolId {
-    private UUID value;
+    private final UUID value;
 
     ToolId(final UUID value) {
         this.value = value;

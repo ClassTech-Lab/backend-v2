@@ -3,7 +3,7 @@ package com.classtechlab.manager.domain.model.keyword;
 import java.util.UUID;
 
 public class KeywordId {
-    private UUID value;
+    private final UUID value;
 
     KeywordId() {
         this(UUID.randomUUID());
@@ -29,7 +29,7 @@ public class KeywordId {
         private final UUID id;
 
         private PlainObject(final KeywordId keywordId) {
-            this.id = keywordId.value;
+            this.id = keywordId.value();
         }
     }
 }
