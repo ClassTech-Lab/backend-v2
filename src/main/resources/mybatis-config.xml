@@ -9,5 +9,6 @@
     <mappers>
         <mapper resource="com/classtechlab/manager/infrastructure/datasource/tool/ToolMapper.xml"/>
         <mapper resource="com/classtechlab/manager/infrastructure/datasource/keyword/KeywordMapper.xml"/>
+        <mapper resource="com/classtechlab/manager/infrastructure/datasource/category/CategoryMapper.xml"/>
     </mappers>
 </configuration>

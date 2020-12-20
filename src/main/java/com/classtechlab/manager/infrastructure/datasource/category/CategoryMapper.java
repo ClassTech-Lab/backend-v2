@@ -1,4 +1,4 @@
-package com.classtechlab.manager.infrastructure.datasource.cotegory;
+package com.classtechlab.manager.infrastructure.datasource.category;
 
 import com.classtechlab.manager.domain.model.category.Category;
 import com.classtechlab.manager.domain.model.category.CategoryId;
