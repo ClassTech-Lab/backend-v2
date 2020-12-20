@@ -8,10 +8,14 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.keyword.KeywordMapper">
+    <insert id="save">
+        INSERT INTO public.keyword (id, name)
+        VALUES (#{id.value}, #{name.value});
+    </insert>
     <select id="findAll" resultType="&Keyword;">
         SELECT k.id   AS "id.value",
                k.name AS "name.value"
-        FROM public.keyword k
+        FROM public.keyword k;
     </select>
     <select id="findBy" parameterType="&KeywordId;" resultType="&Keyword;">
         SELECT k.id   AS "id.value",

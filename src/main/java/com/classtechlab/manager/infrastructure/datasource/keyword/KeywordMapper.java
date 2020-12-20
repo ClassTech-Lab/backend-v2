@@ -8,6 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface KeywordMapper {
+    void save(final Keyword keyword);
+
     List<Keyword> findAll();
 
     Keyword findBy(final KeywordId id);
