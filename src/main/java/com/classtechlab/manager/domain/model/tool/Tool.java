@@ -17,8 +17,8 @@ public class Tool implements Identifiable<Tool> {
         this.name = name;
     }
 
-    public POJO toPOJO() {
-        return new POJO(this.id.value, this.name.value());
+    public PlainObject toPlainObject() {
+        return new PlainObject(this.id.value, this.name.value());
     }
 
     @Override
@@ -26,11 +26,11 @@ public class Tool implements Identifiable<Tool> {
         return this.id.isEqualTo(other.id);
     }
 
-    public static class POJO {
+    public static class PlainObject {
         private final UUID id;
         private final String name;
 
-        POJO(final UUID id, final String name) {
+        PlainObject(final UUID id, final String name) {
             this.id = id;
             this.name = name;
         }

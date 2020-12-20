@@ -8,10 +8,15 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.tool.ToolMapper">
-    <select id="findBy" parameterType="&ToolId;" resultType="&Tool;">
-        SELECT #{id.value}   as "id.value",
-               t.name as "name.value"
+    <select id="findAll" resultType="&Tool;">
+        SELECT t.id   AS "id.value",
+               t.name AS "name.value"
         FROM public.tool t
-        where t.id = #{id.value};
+    </select>
+    <select id="findBy" parameterType="&ToolId;" resultType="&Tool;">
+        SELECT #{id.value} AS "id.value",
+               t.name      AS "name.value"
+        FROM public.tool t
+        WHERE t.id = #{id.value};
     </select>
 </mapper>

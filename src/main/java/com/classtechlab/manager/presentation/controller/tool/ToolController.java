@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("tool")
 public class ToolController {
@@ -18,10 +20,15 @@ public class ToolController {
         this.toolReadService = toolReadService;
     }
 
+    @GetMapping
+    public List<Tool.PlainObject> tool() {
+        return this.toolReadService.readAll().values(Tool::toPlainObject);
+    }
+
     @GetMapping("{id}")
-    public Tool.POJO tool(@PathVariable final ToolId id) {
+    public Tool.PlainObject tool(@PathVariable final ToolId id) {
         final Tool tool = this.toolReadService.read(id);
         if (tool == null) throw new NotFoundException();
-        return tool.toPOJO();
+        return tool.toPlainObject();
     }
 }
