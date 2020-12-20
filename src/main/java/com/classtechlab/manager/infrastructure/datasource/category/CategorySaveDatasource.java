@@ -13,9 +13,12 @@ public class CategorySaveDatasource implements CategorySaveRepository {
     }
 
     @Override
-    public Category save(final Category category) {
-        this.categoryMapper.delete(category);
-        this.categoryMapper.save(category);
-        return category;
+    public void create(final Category category) {
+        this.categoryMapper.insert(category);
+    }
+
+    @Override
+    public void modify(final Category category) {
+        this.categoryMapper.update(category);
     }
 }

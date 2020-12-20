@@ -8,7 +8,7 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.category.CategoryMapper">
-    <insert id="save">
+    <insert id="insert" parameterType="&Category;">
         INSERT INTO public.category (id, name)
         VALUES (#{id.value}, #{name.value});
     </insert>
@@ -23,7 +23,12 @@
         FROM public.category c
         WHERE c.id = #{value};
     </select>
-    <delete id="delete">
+    <update id="update" parameterType="&Category;">
+        UPDATE public.category c
+        SET name = #{name.value}
+        WHERE c.id = #{id.value};
+    </update>
+    <delete id="delete" parameterType="&Category;">
         DELETE
         FROM public.category c
         WHERE c.id = #{id.value};

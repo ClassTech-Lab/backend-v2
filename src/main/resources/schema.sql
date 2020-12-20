@@ -17,4 +17,4 @@ create table public.category
 (
     id   uuid primary key,
     name varchar unique not null
-)
+);

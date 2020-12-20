@@ -33,12 +33,12 @@ public class CategoryController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Category.PlainObject categoryPlainObject) {
-        this.categorySaveService.save(categoryPlainObject.toCategory());
+        this.categorySaveService.modify(categoryPlainObject.toCategory());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryId.PlainObject post(@RequestBody final Category.PlainObject categoryPlainObject) {
-        return this.categorySaveService.save(categoryPlainObject.newCategory()).id().toPlainObject();
+        return this.categorySaveService.create(categoryPlainObject.newCategory()).toPlainObject();
     }
 }

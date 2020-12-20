@@ -8,11 +8,13 @@ import java.util.List;
 
 @Mapper
 public interface CategoryMapper {
+    void insert(final Category category);
+
     List<Category> findAll();
 
     Category findBy(final CategoryId id);
 
-    void save(final Category category);
+    void update(final Category category);
 
     void delete(final Category category);
 }
