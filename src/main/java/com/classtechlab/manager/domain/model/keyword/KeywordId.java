@@ -20,4 +20,16 @@ public class KeywordId {
     boolean isEqualTo(final KeywordId other) {
         return this.value.equals(other.value);
     }
+
+    public PlainObject toPlainObject() {
+        return new PlainObject(this);
+    }
+
+    public static class PlainObject {
+        private UUID id;
+
+        private PlainObject(final KeywordId keywordId) {
+            this.id = keywordId.value;
+        }
+    }
 }

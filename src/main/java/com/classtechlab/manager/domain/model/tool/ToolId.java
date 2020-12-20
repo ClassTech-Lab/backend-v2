@@ -28,7 +28,7 @@ public class ToolId {
     public static class PlainObject {
         private final UUID id;
 
-        public PlainObject(final ToolId toolId) {
+        private PlainObject(final ToolId toolId) {
             this.id = toolId.value();
         }
     }

@@ -2,6 +2,7 @@ package com.classtechlab.manager.domain.model.keyword;
 
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ public class Keyword implements Identifiable<Keyword> {
     }
 
     public PlainObject toPlainObject() {
-        return new PlainObject();
+        return new PlainObject(this);
     }
 
     @Override
@@ -26,11 +27,25 @@ public class Keyword implements Identifiable<Keyword> {
         return this.id.isEqualTo(other.id);
     }
 
-    public class PlainObject {
-        private final UUID id = Keyword.this.id.value();
-        private final String name = Keyword.this.name.value();
+    public static class PlainObject {
+        private UUID id;
+        private String name;
 
-        private PlainObject() {
+        private PlainObject(final Keyword keyword) {
+            this.id = keyword.id.value();
+            this.name = keyword.name.value();
+        }
+
+        public Keyword toKeyword() {
+            if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
+            final Keyword keyword = new Keyword(new Name(this.name));
+            keyword.id = new KeywordId(this.id);
+            return keyword;
+        }
+
+        public Keyword newKeyword() {
+            if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
+            return new Keyword(new Name(this.name));
         }
     }
 }
