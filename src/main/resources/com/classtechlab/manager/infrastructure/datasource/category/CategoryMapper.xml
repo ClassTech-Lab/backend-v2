@@ -8,10 +8,14 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.category.CategoryMapper">
+    <insert id="save">
+        INSERT INTO public.category (id, name)
+        VALUES (#{id.value}, #{name.value});
+    </insert>
     <select id="findAll" resultType="&Category;">
         SELECT c.id   AS "id.value",
                c.name AS "name.value"
-        FROM public.category c
+        FROM public.category c;
     </select>
     <select id="findBy" parameterType="&CategoryId;" resultType="&Category;">
         SELECT c.id   AS "id.value",
@@ -19,4 +23,9 @@
         FROM public.category c
         WHERE c.id = #{value};
     </select>
+    <delete id="delete">
+        DELETE
+        FROM public.category c
+        WHERE c.id = #{id.value};
+    </delete>
 </mapper>

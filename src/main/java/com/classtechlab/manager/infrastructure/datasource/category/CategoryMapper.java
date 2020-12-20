@@ -11,4 +11,8 @@ public interface CategoryMapper {
     List<Category> findAll();
 
     Category findBy(final CategoryId id);
+
+    void save(final Category category);
+
+    void delete(final Category category);
 }
