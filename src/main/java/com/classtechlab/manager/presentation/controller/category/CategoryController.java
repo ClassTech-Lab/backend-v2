@@ -2,8 +2,10 @@ package com.classtechlab.manager.presentation.controller.category;
 
 import com.classtechlab.manager.application.service.category.CategoryReadService;
 import com.classtechlab.manager.application.service.category.CategorySaveService;
+import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.category.Category;
 import com.classtechlab.manager.domain.model.category.CategoryId;
+import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,12 +35,20 @@ public class CategoryController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Category.PlainObject categoryPlainObject) {
-        this.categorySaveService.modify(categoryPlainObject.toCategory());
+        try {
+            this.categorySaveService.modify(categoryPlainObject.toCategory());
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryId.PlainObject post(@RequestBody final Category.PlainObject categoryPlainObject) {
-        return this.categorySaveService.create(categoryPlainObject.newCategory()).toPlainObject();
+        try {
+            return this.categorySaveService.create(categoryPlainObject.newCategory()).toPlainObject();
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
     }
 }

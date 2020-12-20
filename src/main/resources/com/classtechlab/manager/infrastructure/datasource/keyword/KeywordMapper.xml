@@ -8,7 +8,7 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.keyword.KeywordMapper">
-    <insert id="save">
+    <insert id="insert" parameterType="&Keyword;">
         INSERT INTO public.keyword (id, name)
         VALUES (#{id.value}, #{name.value});
     </insert>

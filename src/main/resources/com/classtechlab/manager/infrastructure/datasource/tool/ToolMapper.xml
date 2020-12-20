@@ -8,7 +8,7 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.tool.ToolMapper">
-    <insert id="save" parameterType="&Tool;">
+    <insert id="insert" parameterType="&Tool;">
         INSERT INTO public.tool (id, name)
         VALUES (#{id.value}, #{name.value});
     </insert>

@@ -2,8 +2,10 @@ package com.classtechlab.manager.presentation.controller.keyword;
 
 import com.classtechlab.manager.application.service.keyword.KeywordReadService;
 import com.classtechlab.manager.application.service.keyword.KeywordSaveService;
+import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.keyword.Keyword;
 import com.classtechlab.manager.domain.model.keyword.KeywordId;
+import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,12 +35,20 @@ public class KeywordController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Keyword.PlainObject keywordPlainObject) {
-        this.keywordSaveService.modify(keywordPlainObject.toKeyword());
+        try {
+            this.keywordSaveService.modify(keywordPlainObject.toKeyword());
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public KeywordId.PlainObject post(@RequestBody final Keyword.PlainObject keywordPlainObject) {
-        return this.keywordSaveService.create(keywordPlainObject.newKeyword()).toPlainObject();
+        try {
+            return this.keywordSaveService.create(keywordPlainObject.newKeyword()).toPlainObject();
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
     }
 }

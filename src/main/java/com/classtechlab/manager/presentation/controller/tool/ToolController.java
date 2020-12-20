@@ -2,8 +2,10 @@ package com.classtechlab.manager.presentation.controller.tool;
 
 import com.classtechlab.manager.application.service.tool.ToolReadService;
 import com.classtechlab.manager.application.service.tool.ToolSaveService;
+import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.tool.Tool;
 import com.classtechlab.manager.domain.model.tool.ToolId;
+import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
 import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -36,12 +38,20 @@ public class ToolController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Tool.PlainObject toolPlainObject) {
-        this.toolSaveService.modify(toolPlainObject.toTool());
+        try {
+            this.toolSaveService.modify(toolPlainObject.toTool());
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ToolId.PlainObject post(@RequestBody final Tool.PlainObject toolPlainObject) {
-        return this.toolSaveService.create(toolPlainObject.newTool()).toPlainObject();
+        try {
+            return this.toolSaveService.create(toolPlainObject.newTool()).toPlainObject();
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
     }
 }

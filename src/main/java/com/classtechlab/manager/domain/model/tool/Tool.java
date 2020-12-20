@@ -1,5 +1,6 @@
 package com.classtechlab.manager.domain.model.tool;
 
+import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 import org.apache.commons.lang3.StringUtils;
@@ -43,14 +44,14 @@ public class Tool implements Identifiable<Tool> {
             this.name = tool.name.value();
         }
 
-        public Tool toTool() {
+        public Tool toTool() throws IllegalArgumentException {
             if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             final Tool tool = new Tool(new Name(this.name));
             tool.id = new ToolId(this.id);
             return tool;
         }
 
-        public Tool newTool() {
+        public Tool newTool() throws IllegalArgumentException {
             if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             return new Tool(new Name(this.name));
         }

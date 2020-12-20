@@ -1,5 +1,6 @@
 package com.classtechlab.manager.domain.model.keyword;
 
+import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 import org.apache.commons.lang3.StringUtils;
@@ -43,14 +44,14 @@ public class Keyword implements Identifiable<Keyword> {
             this.name = keyword.name.value();
         }
 
-        public Keyword toKeyword() {
+        public Keyword toKeyword() throws IllegalArgumentException {
             if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             final Keyword keyword = new Keyword(new Name(this.name));
             keyword.id = new KeywordId(this.id);
             return keyword;
         }
 
-        public Keyword newKeyword() {
+        public Keyword newKeyword() throws IllegalArgumentException {
             if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             return new Keyword(new Name(this.name));
         }

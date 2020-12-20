@@ -1,5 +1,6 @@
 package com.classtechlab.manager.domain.model.category;
 
+import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 import org.apache.commons.lang3.StringUtils;
@@ -43,14 +44,14 @@ public class Category implements Identifiable<Category> {
             this.name = category.name.value();
         }
 
-        public Category toCategory() {
+        public Category toCategory() throws IllegalArgumentException {
             if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             final Category category = new Category(new Name(this.name));
             category.id = new CategoryId(this.id);
             return category;
         }
 
-        public Category newCategory() {
+        public Category newCategory() throws IllegalArgumentException {
             if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             return new Category(new Name(this.name));
         }
