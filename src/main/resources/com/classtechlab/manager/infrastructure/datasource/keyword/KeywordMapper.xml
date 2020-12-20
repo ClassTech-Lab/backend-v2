@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        [
+                <!ENTITY Keyword "com.classtechlab.manager.domain.model.keyword.Keyword">
+                <!ENTITY KeywordId "com.classtechlab.manager.domain.model.keyword.KeywordId">
+                ]
+        >
+<mapper namespace="com.classtechlab.manager.infrastructure.datasource.keyword.KeywordMapper">
+    <select id="findAll" resultType="&Keyword;">
+        SELECT k.id   AS "id.value",
+               k.name AS "name.value"
+        FROM public.keyword k
+    </select>
+    <select id="findBy" parameterType="&KeywordId;" resultType="&Keyword;">
+        SELECT k.id   AS "id.value",
+               k.name AS "name.value"
+        FROM public.keyword k
+        WHERE k.id = #{value};
+    </select>
+</mapper>

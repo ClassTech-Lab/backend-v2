@@ -30,7 +30,7 @@ public class Tool implements Identifiable<Tool> {
         private final UUID id;
         private final String name;
 
-        PlainObject(final UUID id, final String name) {
+        private PlainObject(final UUID id, final String name) {
             this.id = id;
             this.name = name;
         }

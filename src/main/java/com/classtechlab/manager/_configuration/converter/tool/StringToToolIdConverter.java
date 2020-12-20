@@ -1,4 +1,4 @@
-package com.classtechlab.manager._configuration.converter;
+package com.classtechlab.manager._configuration.converter.tool;
 
 import com.classtechlab.manager.domain.model.tool.ToolId;
 import com.classtechlab.manager.exception.ApplicationRuntimeException;

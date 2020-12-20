@@ -14,9 +14,9 @@
         FROM public.tool t
     </select>
     <select id="findBy" parameterType="&ToolId;" resultType="&Tool;">
-        SELECT #{id.value} AS "id.value",
-               t.name      AS "name.value"
+        SELECT t.id   AS "id.value",
+               t.name AS "name.value"
         FROM public.tool t
-        WHERE t.id = #{id.value};
+        WHERE t.id = #{value};
     </select>
 </mapper>
