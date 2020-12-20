@@ -26,7 +26,7 @@ public class KeywordId {
     }
 
     public static class PlainObject {
-        private UUID id;
+        private final UUID id;
 
         private PlainObject(final KeywordId keywordId) {
             this.id = keywordId.value;

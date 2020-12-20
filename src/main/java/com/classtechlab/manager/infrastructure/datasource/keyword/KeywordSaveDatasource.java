@@ -14,6 +14,7 @@ public class KeywordSaveDatasource implements KeywordSaveRepository {
 
     @Override
     public Keyword save(final Keyword keyword) {
+        this.keywordMapper.delete(keyword);
         this.keywordMapper.save(keyword);
         return keyword;
     }

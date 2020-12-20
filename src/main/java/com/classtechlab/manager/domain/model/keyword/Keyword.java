@@ -18,6 +18,10 @@ public class Keyword implements Identifiable<Keyword> {
         this.name = name;
     }
 
+    public KeywordId id() {
+        return this.id;
+    }
+
     public PlainObject toPlainObject() {
         return new PlainObject(this);
     }
@@ -30,6 +34,9 @@ public class Keyword implements Identifiable<Keyword> {
     public static class PlainObject {
         private UUID id;
         private String name;
+
+        private PlainObject() {
+        }
 
         private PlainObject(final Keyword keyword) {
             this.id = keyword.id.value();

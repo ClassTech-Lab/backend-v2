@@ -23,4 +23,7 @@
         FROM public.keyword k
         WHERE k.id = #{value};
     </select>
+    <delete id="delete">
+        DELETE FROM public.keyword k WHERE k.id = #{id.value};
+    </delete>
 </mapper>

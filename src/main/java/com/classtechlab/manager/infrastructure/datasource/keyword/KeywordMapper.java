@@ -13,4 +13,6 @@ public interface KeywordMapper {
     List<Keyword> findAll();
 
     Keyword findBy(final KeywordId id);
+
+    void delete(final Keyword keyword);
 }
