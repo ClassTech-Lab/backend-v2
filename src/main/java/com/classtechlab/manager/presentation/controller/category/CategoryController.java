@@ -20,12 +20,12 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<Category.PlainObject> category() {
+    public List<Category.PlainObject> get() {
         return this.categoryReadService.readAll().values(Category::toPlainObject);
     }
 
     @GetMapping("{id}")
-    public Category category(@PathVariable final CategoryId id) {
+    public Category get(@PathVariable final CategoryId id) {
         return this.categoryReadService.readBy(id);
     }
 }

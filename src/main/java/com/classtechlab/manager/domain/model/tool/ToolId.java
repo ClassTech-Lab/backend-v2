@@ -17,7 +17,19 @@ public class ToolId {
         return this.value;
     }
 
+    public PlainObject toPlainObject() {
+        return new PlainObject(this);
+    }
+
     boolean isEqualTo(final ToolId other) {
         return this.value.equals(other.value);
+    }
+
+    public static class PlainObject {
+        private final UUID id;
+
+        public PlainObject(final ToolId toolId) {
+            this.id = toolId.value();
+        }
     }
 }

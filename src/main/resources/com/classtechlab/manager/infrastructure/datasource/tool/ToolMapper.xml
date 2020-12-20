@@ -8,10 +8,14 @@
                 ]
         >
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.tool.ToolMapper">
+    <insert id="save" parameterType="&Tool;">
+        INSERT INTO public.tool (id, name)
+        VALUES (#{id.value}, #{name.value});
+    </insert>
     <select id="findAll" resultType="&Tool;">
         SELECT t.id   AS "id.value",
                t.name AS "name.value"
-        FROM public.tool t
+        FROM public.tool t;
     </select>
     <select id="findBy" parameterType="&ToolId;" resultType="&Tool;">
         SELECT t.id   AS "id.value",
@@ -19,4 +23,9 @@
         FROM public.tool t
         WHERE t.id = #{value};
     </select>
+    <delete id="delete" parameterType="&Tool;">
+        DELETE
+        FROM public.tool t
+        WHERE t.id = #{id.value};
+    </delete>
 </mapper>

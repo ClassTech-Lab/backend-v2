@@ -20,12 +20,12 @@ public class KeywordController {
     }
 
     @GetMapping
-    public List<Keyword.PlainObject> keyword() {
+    public List<Keyword.PlainObject> get() {
         return this.keywordReadService.readAll().values(Keyword::toPlainObject);
     }
 
     @GetMapping("{id}")
-    public Keyword keyword(@PathVariable final KeywordId id) {
+    public Keyword get(@PathVariable final KeywordId id) {
         return this.keywordReadService.readBy(id);
     }
 }

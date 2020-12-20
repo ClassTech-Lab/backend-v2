@@ -1,13 +1,12 @@
 package com.classtechlab.manager.presentation.controller.tool;
 
 import com.classtechlab.manager.application.service.tool.ToolReadService;
+import com.classtechlab.manager.application.service.tool.ToolSaveService;
 import com.classtechlab.manager.domain.model.tool.Tool;
 import com.classtechlab.manager.domain.model.tool.ToolId;
 import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,20 +14,34 @@ import java.util.List;
 @RequestMapping("tool")
 public class ToolController {
     private final ToolReadService toolReadService;
+    private final ToolSaveService toolSaveService;
 
-    public ToolController(final ToolReadService toolReadService) {
+    public ToolController(final ToolReadService toolReadService, final ToolSaveService toolSaveService) {
         this.toolReadService = toolReadService;
+        this.toolSaveService = toolSaveService;
     }
 
     @GetMapping
-    public List<Tool.PlainObject> tool() {
+    public List<Tool.PlainObject> get() {
         return this.toolReadService.readAll().values(Tool::toPlainObject);
     }
 
     @GetMapping("{id}")
-    public Tool.PlainObject tool(@PathVariable final ToolId id) {
+    public Tool.PlainObject get(@PathVariable final ToolId id) {
         final Tool tool = this.toolReadService.read(id);
         if (tool == null) throw new NotFoundException();
         return tool.toPlainObject();
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void put(@RequestBody final Tool.PlainObject toolPlainObject) {
+        this.toolSaveService.save(toolPlainObject.toTool());
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ToolId.PlainObject post(@RequestBody final Tool.PlainObject toolPlainObject) {
+        return this.toolSaveService.save(toolPlainObject.newTool()).toPlainObject();
     }
 }
