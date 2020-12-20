@@ -18,7 +18,7 @@ public class Keyword implements Identifiable<Keyword> {
     }
 
     public PlainObject toPlainObject() {
-        return new PlainObject(this.id.value, this.name.value());
+        return new PlainObject();
     }
 
     @Override
@@ -26,13 +26,11 @@ public class Keyword implements Identifiable<Keyword> {
         return this.id.isEqualTo(other.id);
     }
 
-    public static class PlainObject {
-        private final UUID id;
-        private final String name;
+    public class PlainObject {
+        private final UUID id = Keyword.this.id.value();
+        private final String name = Keyword.this.name.value();
 
-        private PlainObject(final UUID id, final String name) {
-            this.id = id;
-            this.name = name;
+        private PlainObject() {
         }
     }
 }

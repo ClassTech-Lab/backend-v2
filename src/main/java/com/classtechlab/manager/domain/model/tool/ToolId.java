@@ -3,7 +3,7 @@ package com.classtechlab.manager.domain.model.tool;
 import java.util.UUID;
 
 public class ToolId {
-    UUID value;
+    private UUID value;
 
     ToolId(final UUID value) {
         this.value = value;
@@ -11,6 +11,10 @@ public class ToolId {
 
     ToolId() {
         this(UUID.randomUUID());
+    }
+
+    UUID value() {
+        return this.value;
     }
 
     boolean isEqualTo(final ToolId other) {

@@ -6,8 +6,8 @@ import com.classtechlab.manager.domain.type.name.Name;
 import java.util.UUID;
 
 public class Tool implements Identifiable<Tool> {
-     ToolId id;
-     Name name;
+    ToolId id;
+    Name name;
 
     private Tool() {
     }
@@ -18,7 +18,7 @@ public class Tool implements Identifiable<Tool> {
     }
 
     public PlainObject toPlainObject() {
-        return new PlainObject(this.id.value, this.name.value());
+        return new PlainObject();
     }
 
     @Override
@@ -26,13 +26,11 @@ public class Tool implements Identifiable<Tool> {
         return this.id.isEqualTo(other.id);
     }
 
-    public static class PlainObject {
-        private final UUID id;
-        private final String name;
+    public class PlainObject {
+        private final UUID id = Tool.this.id.value();
+        private final String name = Tool.this.name.value();
 
-        private PlainObject(final UUID id, final String name) {
-            this.id = id;
-            this.name = name;
+        private PlainObject() {
         }
     }
 }

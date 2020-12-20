@@ -3,7 +3,7 @@ package com.classtechlab.manager.domain.model.keyword;
 import java.util.UUID;
 
 public class KeywordId {
-    UUID value;
+    private UUID value;
 
     KeywordId() {
         this(UUID.randomUUID());
@@ -11,6 +11,10 @@ public class KeywordId {
 
     KeywordId(final UUID value) {
         this.value = value;
+    }
+
+    UUID value() {
+        return this.value;
     }
 
     boolean isEqualTo(final KeywordId other) {
