@@ -18,7 +18,7 @@ public class ToolSaveDatasource implements ToolSaveRepository {
     }
 
     @Override
-    public void modify(final Tool tool) {
-        this.toolMapper.update(tool);
+    public boolean modify(final Tool tool) {
+        return this.toolMapper.update(tool);
     }
 }

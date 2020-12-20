@@ -1,8 +1,8 @@
 package com.classtechlab.manager.presentation.exception;
 
-import com.classtechlab.manager.exception.ApplicationRuntimeException;
+import com.classtechlab.manager.exception.ClassTechLabManagerRuntimeException;
 
-public class PresentationException extends ApplicationRuntimeException {
+public class PresentationException extends ClassTechLabManagerRuntimeException {
     public PresentationException() {
         super();
     }

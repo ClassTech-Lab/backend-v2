@@ -18,7 +18,7 @@ public class ToolSaveService {
         return tool.id();
     }
 
-    public void modify(final Tool tool) {
-        this.toolSaveRepository.modify(tool);
+    public boolean modify(final Tool tool) {
+        return this.toolSaveRepository.modify(tool);
     }
 }

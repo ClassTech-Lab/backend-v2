@@ -14,7 +14,7 @@ public interface ToolMapper {
 
     Tool findBy(final ToolId id);
 
-    void update(final Tool tool);
+    boolean update(final Tool tool);
 
-    void delete(final Tool tool);
+    boolean delete(final Tool tool);
 }

@@ -18,7 +18,7 @@ public class KeywordSaveService {
         return keyword.id();
     }
 
-    public void modify(final Keyword keyword) {
-        this.keywordSaveRepository.modify(keyword);
+    public boolean modify(final Keyword keyword) {
+        return this.keywordSaveRepository.modify(keyword);
     }
 }

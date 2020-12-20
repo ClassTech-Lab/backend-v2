@@ -1,8 +1,8 @@
 package com.classtechlab.manager.domain.exception;
 
-import com.classtechlab.manager.exception.ApplicationException;
+import com.classtechlab.manager.exception.ClassTechLabManagerException;
 
-public class DomainException extends ApplicationException {
+public class DomainException extends ClassTechLabManagerException {
     public DomainException() {
         super();
     }

@@ -18,7 +18,7 @@ public class CategorySaveDatasource implements CategorySaveRepository {
     }
 
     @Override
-    public void modify(final Category category) {
-        this.categoryMapper.update(category);
+    public boolean modify(final Category category) {
+        return this.categoryMapper.update(category);
     }
 }

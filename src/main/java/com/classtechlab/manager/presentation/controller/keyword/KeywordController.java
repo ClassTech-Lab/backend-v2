@@ -6,6 +6,7 @@ import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.keyword.Keyword;
 import com.classtechlab.manager.domain.model.keyword.KeywordId;
 import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
+import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class KeywordController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@PathVariable final KeywordId id, @RequestBody final Keyword.PlainObject keywordPlainObject) {
         try {
-            this.keywordSaveService.modify(keywordPlainObject.toKeyword(id));
+            if (!this.keywordSaveService.modify(keywordPlainObject.toKeyword(id))) throw new NotFoundException();
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

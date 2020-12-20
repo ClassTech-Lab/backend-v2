@@ -6,6 +6,7 @@ import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.category.Category;
 import com.classtechlab.manager.domain.model.category.CategoryId;
 import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
+import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@PathVariable final CategoryId id, @RequestBody final Category.PlainObject categoryPlainObject) {
         try {
-            this.categorySaveService.modify(categoryPlainObject.toCategory(id));
+            if (!this.categorySaveService.modify(categoryPlainObject.toCategory(id))) throw new NotFoundException();
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

@@ -39,7 +39,7 @@ public class ToolController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@PathVariable final ToolId id, @RequestBody final Tool.PlainObject toolPlainObject) {
         try {
-            this.toolSaveService.modify(toolPlainObject.toTool(id));
+            if (this.toolSaveService.modify(toolPlainObject.toTool(id))) throw new NotFoundException();
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

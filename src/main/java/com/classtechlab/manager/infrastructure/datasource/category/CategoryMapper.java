@@ -14,7 +14,7 @@ public interface CategoryMapper {
 
     Category findBy(final CategoryId id);
 
-    void update(final Category category);
+    boolean update(final Category category);
 
-    void delete(final Category category);
+    boolean delete(final Category category);
 }

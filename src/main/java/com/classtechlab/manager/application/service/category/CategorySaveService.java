@@ -18,7 +18,7 @@ public class CategorySaveService {
         return category.id();
     }
 
-    public void modify(final Category category) {
-        this.categorySaveRepository.modify(category);
+    public boolean modify(final Category category) {
+        return this.categorySaveRepository.modify(category);
     }
 }

@@ -14,7 +14,7 @@ public interface KeywordMapper {
 
     Keyword findBy(final KeywordId id);
 
-    void update(final Keyword keyword);
+    boolean update(final Keyword keyword);
 
-    void delete(final Keyword keyword);
+    boolean delete(final Keyword keyword);
 }

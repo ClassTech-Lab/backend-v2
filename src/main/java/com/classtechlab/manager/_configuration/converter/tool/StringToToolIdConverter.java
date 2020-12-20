@@ -1,7 +1,7 @@
 package com.classtechlab.manager._configuration.converter.tool;
 
 import com.classtechlab.manager.domain.model.tool.ToolId;
-import com.classtechlab.manager.exception.ApplicationRuntimeException;
+import com.classtechlab.manager.exception.ClassTechLabManagerRuntimeException;
 import org.springframework.core.convert.converter.Converter;
 
 import java.lang.reflect.Constructor;
@@ -21,7 +21,7 @@ public class StringToToolIdConverter implements Converter<String, ToolId> {
             field.set(toolId, UUID.fromString(source));
             return toolId;
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
-            throw new ApplicationRuntimeException();
+            throw new ClassTechLabManagerRuntimeException();
         }
     }
 }

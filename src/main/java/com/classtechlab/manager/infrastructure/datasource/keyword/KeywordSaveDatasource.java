@@ -18,7 +18,7 @@ public class KeywordSaveDatasource implements KeywordSaveRepository {
     }
 
     @Override
-    public void modify(final Keyword keyword) {
-        this.keywordMapper.update(keyword);
+    public boolean modify(final Keyword keyword) {
+        return this.keywordMapper.update(keyword);
     }
 }

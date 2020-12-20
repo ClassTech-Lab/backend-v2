@@ -1,7 +1,7 @@
 package com.classtechlab.manager._configuration.converter.category;
 
 import com.classtechlab.manager.domain.model.category.CategoryId;
-import com.classtechlab.manager.exception.ApplicationRuntimeException;
+import com.classtechlab.manager.exception.ClassTechLabManagerRuntimeException;
 import org.springframework.core.convert.converter.Converter;
 
 import java.lang.reflect.Constructor;
@@ -21,7 +21,7 @@ public class StringToCategoryIdConverter implements Converter<String, CategoryId
             field.set(categoryId, UUID.fromString(source));
             return categoryId;
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
-            throw new ApplicationRuntimeException();
+            throw new ClassTechLabManagerRuntimeException();
         }
     }
 }
