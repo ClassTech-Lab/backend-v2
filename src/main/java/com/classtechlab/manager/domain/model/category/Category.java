@@ -2,12 +2,29 @@ package com.classtechlab.manager.domain.model.category;
 
 import com.classtechlab.manager.domain.type.name.Name;
 
-public class Category {
-    private final CategoryId id;
-    private final Name name;
+import java.util.UUID;
 
-    public Category(final CategoryId id, final Name name) {
-        this.id = id;
+public class Category {
+    CategoryId id;
+    Name name;
+
+    private Category() {
+    }
+
+    Category(final Name name) {
+        this.id = new CategoryId();
         this.name = name;
+    }
+
+    public PlainObject toPlainObject() {
+        return new PlainObject();
+    }
+
+    public class PlainObject {
+        private final UUID id = Category.this.id.value();
+        private final String name = Category.this.name.value();
+
+        private PlainObject() {
+        }
     }
 }

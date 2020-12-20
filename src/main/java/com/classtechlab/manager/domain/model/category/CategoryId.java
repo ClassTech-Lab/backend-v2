@@ -13,6 +13,10 @@ public class CategoryId {
         this(UUID.randomUUID());
     }
 
+    UUID value() {
+        return this.value;
+    }
+
     boolean isEqualTo(final CategoryId other) {
         return this.value.equals(other.value);
     }
