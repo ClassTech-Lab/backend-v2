@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        [
+                <!ENTITY Category "com.classtechlab.manager.domain.model.category.Category">
+                <!ENTITY CategoryId "com.classtechlab.manager.domain.model.category.CategoryId">
+                ]
+        >
+<mapper namespace="com.classtechlab.manager.infrastructure.datasource.category.CategoryMapper">
+    <select id="findAll" resultType="&Category;">
+        SELECT c.id   AS "id.value",
+               c.name AS "name.value"
+        FROM public.category c
+    </select>
+    <select id="findBy" parameterType="&CategoryId;" resultType="&Category;">
+        SELECT c.id   AS "id.value",
+               c.name AS "name.value"
+        FROM public.category c
+        WHERE c.id = #{value};
+    </select>
+</mapper>
