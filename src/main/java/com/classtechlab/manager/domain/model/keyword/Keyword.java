@@ -14,8 +14,8 @@ public class Keyword implements Identifiable<Keyword> {
     private Keyword() {
     }
 
-    Keyword(final Name name) {
-        this.id = new KeywordId();
+    private Keyword(final KeywordId id, final Name name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -44,16 +44,13 @@ public class Keyword implements Identifiable<Keyword> {
             this.name = keyword.name.value();
         }
 
-        public Keyword toKeyword() throws IllegalArgumentException {
-            if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            final Keyword keyword = new Keyword(new Name(this.name));
-            keyword.id = new KeywordId(this.id);
-            return keyword;
+        public Keyword toKeyword(final KeywordId id) throws IllegalArgumentException {
+            if (id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
+            return new Keyword(id, new Name(this.name));
         }
 
-        public Keyword newKeyword() throws IllegalArgumentException {
-            if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            return new Keyword(new Name(this.name));
+        public Keyword toKeyword() throws IllegalArgumentException {
+            return this.toKeyword(new KeywordId());
         }
     }
 }

@@ -14,8 +14,8 @@ public class Category implements Identifiable<Category> {
     private Category() {
     }
 
-    private Category(final Name name) {
-        this.id = new CategoryId();
+    private Category(final CategoryId id, final Name name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -44,16 +44,13 @@ public class Category implements Identifiable<Category> {
             this.name = category.name.value();
         }
 
-        public Category toCategory() throws IllegalArgumentException {
-            if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            final Category category = new Category(new Name(this.name));
-            category.id = new CategoryId(this.id);
-            return category;
+        public Category toCategory(final CategoryId id) throws IllegalArgumentException {
+            if (id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
+            return new Category(id, new Name(this.name));
         }
 
-        public Category newCategory() throws IllegalArgumentException {
-            if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            return new Category(new Name(this.name));
+        public Category toCategory() throws IllegalArgumentException {
+            return this.toCategory(new CategoryId());
         }
     }
 }

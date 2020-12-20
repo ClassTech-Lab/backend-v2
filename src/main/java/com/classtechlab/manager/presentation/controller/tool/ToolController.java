@@ -35,11 +35,11 @@ public class ToolController {
         return tool.toPlainObject();
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void put(@RequestBody final Tool.PlainObject toolPlainObject) {
+    public void put(@PathVariable final ToolId id, @RequestBody final Tool.PlainObject toolPlainObject) {
         try {
-            this.toolSaveService.modify(toolPlainObject.toTool());
+            this.toolSaveService.modify(toolPlainObject.toTool(id));
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }
@@ -49,7 +49,7 @@ public class ToolController {
     @ResponseStatus(HttpStatus.CREATED)
     public ToolId.PlainObject post(@RequestBody final Tool.PlainObject toolPlainObject) {
         try {
-            return this.toolSaveService.create(toolPlainObject.newTool()).toPlainObject();
+            return this.toolSaveService.create(toolPlainObject.toTool()).toPlainObject();
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

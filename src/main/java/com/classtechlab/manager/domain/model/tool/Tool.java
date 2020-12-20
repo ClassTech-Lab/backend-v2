@@ -14,8 +14,8 @@ public class Tool implements Identifiable<Tool> {
     private Tool() {
     }
 
-    private Tool(final Name name) {
-        this.id = new ToolId();
+    private Tool(final ToolId id, final Name name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -44,16 +44,13 @@ public class Tool implements Identifiable<Tool> {
             this.name = tool.name.value();
         }
 
-        public Tool toTool() throws IllegalArgumentException {
+        public Tool toTool(final ToolId id) throws IllegalArgumentException {
             if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            final Tool tool = new Tool(new Name(this.name));
-            tool.id = new ToolId(this.id);
-            return tool;
+            return new Tool(id, new Name(this.name));
         }
 
-        public Tool newTool() throws IllegalArgumentException {
-            if (StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            return new Tool(new Name(this.name));
+        public Tool toTool() throws IllegalArgumentException {
+            return this.toTool(new ToolId());
         }
     }
 }

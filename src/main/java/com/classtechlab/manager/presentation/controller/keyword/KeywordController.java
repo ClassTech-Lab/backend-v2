@@ -32,11 +32,11 @@ public class KeywordController {
         return this.keywordReadService.readBy(id).toPlainObject();
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void put(@RequestBody final Keyword.PlainObject keywordPlainObject) {
+    public void put(@PathVariable final KeywordId id, @RequestBody final Keyword.PlainObject keywordPlainObject) {
         try {
-            this.keywordSaveService.modify(keywordPlainObject.toKeyword());
+            this.keywordSaveService.modify(keywordPlainObject.toKeyword(id));
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }
@@ -46,7 +46,7 @@ public class KeywordController {
     @ResponseStatus(HttpStatus.CREATED)
     public KeywordId.PlainObject post(@RequestBody final Keyword.PlainObject keywordPlainObject) {
         try {
-            return this.keywordSaveService.create(keywordPlainObject.newKeyword()).toPlainObject();
+            return this.keywordSaveService.create(keywordPlainObject.toKeyword()).toPlainObject();
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

@@ -32,11 +32,11 @@ public class CategoryController {
         return this.categoryReadService.readBy(id);
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void put(@RequestBody final Category.PlainObject categoryPlainObject) {
+    public void put(@PathVariable final CategoryId id, @RequestBody final Category.PlainObject categoryPlainObject) {
         try {
-            this.categorySaveService.modify(categoryPlainObject.toCategory());
+            this.categorySaveService.modify(categoryPlainObject.toCategory(id));
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }
@@ -46,7 +46,7 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryId.PlainObject post(@RequestBody final Category.PlainObject categoryPlainObject) {
         try {
-            return this.categorySaveService.create(categoryPlainObject.newCategory()).toPlainObject();
+            return this.categorySaveService.create(categoryPlainObject.toCategory()).toPlainObject();
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }
