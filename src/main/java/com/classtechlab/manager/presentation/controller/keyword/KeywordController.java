@@ -4,6 +4,7 @@ import com.classtechlab.manager.application.service.keyword.KeywordReadService;
 import com.classtechlab.manager.application.service.keyword.KeywordSaveService;
 import com.classtechlab.manager.domain.model.keyword.Keyword;
 import com.classtechlab.manager.domain.model.keyword.KeywordId;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,11 +31,13 @@ public class KeywordController {
     }
 
     @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Keyword.PlainObject keywordPlainObject) {
         this.keywordSaveService.save(keywordPlainObject.toKeyword()).id().toPlainObject();
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public KeywordId.PlainObject post(@RequestBody final Keyword.PlainObject keywordPlainObject) {
         return this.keywordSaveService.save(keywordPlainObject.newKeyword()).id().toPlainObject();
     }
