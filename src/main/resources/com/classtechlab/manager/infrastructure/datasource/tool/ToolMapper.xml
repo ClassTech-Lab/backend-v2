@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        [
+                <!ENTITY Tool "com.classtechlab.manager.domain.model.tool.Tool">
+                <!ENTITY ToolId "com.classtechlab.manager.domain.model.tool.ToolId">
+                ]
+        >
+<mapper namespace="com.classtechlab.manager.infrastructure.datasource.tool.ToolMapper">
+    <select id="findBy" parameterType="&ToolId;" resultType="&Tool;">
+        SELECT #{id.value}   as "id.value",
+               t.name as "name.value"
+        FROM public.tool t
+        where t.id = #{id.value};
+    </select>
+</mapper>
