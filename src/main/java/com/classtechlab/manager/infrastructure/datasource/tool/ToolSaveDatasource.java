@@ -2,7 +2,6 @@ package com.classtechlab.manager.infrastructure.datasource.tool;
 
 import com.classtechlab.manager.application.repository.tool.ToolSaveRepository;
 import com.classtechlab.manager.domain.model.tool.Tool;
-import com.classtechlab.manager.domain.model.tool.ToolId;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,9 +13,9 @@ public class ToolSaveDatasource implements ToolSaveRepository {
     }
 
     @Override
-    public ToolId save(final Tool tool) {
+    public Tool save(final Tool tool) {
         this.toolMapper.delete(tool);
         this.toolMapper.save(tool);
-        return tool.id();
+        return tool;
     }
 }

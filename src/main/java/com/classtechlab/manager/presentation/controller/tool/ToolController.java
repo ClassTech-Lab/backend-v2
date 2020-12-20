@@ -42,6 +42,6 @@ public class ToolController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ToolId.PlainObject post(@RequestBody final Tool.PlainObject toolPlainObject) {
-        return this.toolSaveService.save(toolPlainObject.newTool()).toPlainObject();
+        return this.toolSaveService.save(toolPlainObject.newTool()).id().toPlainObject();
     }
 }
