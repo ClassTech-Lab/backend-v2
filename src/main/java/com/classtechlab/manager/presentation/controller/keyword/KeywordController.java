@@ -33,12 +33,12 @@ public class KeywordController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Keyword.PlainObject keywordPlainObject) {
-        this.keywordSaveService.save(keywordPlainObject.toKeyword()).id().toPlainObject();
+        this.keywordSaveService.modify(keywordPlainObject.toKeyword());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public KeywordId.PlainObject post(@RequestBody final Keyword.PlainObject keywordPlainObject) {
-        return this.keywordSaveService.save(keywordPlainObject.newKeyword()).id().toPlainObject();
+        return this.keywordSaveService.create(keywordPlainObject.newKeyword()).toPlainObject();
     }
 }

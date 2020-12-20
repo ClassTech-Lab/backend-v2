@@ -8,11 +8,13 @@ import java.util.List;
 
 @Mapper
 public interface KeywordMapper {
-    void save(final Keyword keyword);
+    void insert(final Keyword keyword);
 
     List<Keyword> findAll();
 
     Keyword findBy(final KeywordId id);
+
+    void update(final Keyword keyword);
 
     void delete(final Keyword keyword);
 }
