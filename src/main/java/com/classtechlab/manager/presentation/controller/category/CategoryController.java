@@ -1,12 +1,11 @@
 package com.classtechlab.manager.presentation.controller.category;
 
 import com.classtechlab.manager.application.service.category.CategoryReadService;
+import com.classtechlab.manager.application.service.category.CategorySaveService;
 import com.classtechlab.manager.domain.model.category.Category;
 import com.classtechlab.manager.domain.model.category.CategoryId;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,9 +13,11 @@ import java.util.List;
 @RequestMapping("category")
 public class CategoryController {
     private final CategoryReadService categoryReadService;
+    private final CategorySaveService categorySaveService;
 
-    public CategoryController(final CategoryReadService categoryReadService) {
+    public CategoryController(final CategoryReadService categoryReadService, final CategorySaveService categorySaveService) {
         this.categoryReadService = categoryReadService;
+        this.categorySaveService = categorySaveService;
     }
 
     @GetMapping
@@ -27,5 +28,17 @@ public class CategoryController {
     @GetMapping("{id}")
     public Category get(@PathVariable final CategoryId id) {
         return this.categoryReadService.readBy(id);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void put(@RequestBody final Category.PlainObject categoryPlainObject) {
+        this.categorySaveService.save(categoryPlainObject.toCategory());
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public CategoryId.PlainObject post(@RequestBody final Category.PlainObject categoryPlainObject) {
+        return this.categorySaveService.save(categoryPlainObject.newCategory()).id().toPlainObject();
     }
 }
