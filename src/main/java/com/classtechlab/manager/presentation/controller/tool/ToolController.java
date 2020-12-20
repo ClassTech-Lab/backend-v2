@@ -36,12 +36,12 @@ public class ToolController {
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@RequestBody final Tool.PlainObject toolPlainObject) {
-        this.toolSaveService.save(toolPlainObject.toTool());
+        this.toolSaveService.modify(toolPlainObject.toTool());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ToolId.PlainObject post(@RequestBody final Tool.PlainObject toolPlainObject) {
-        return this.toolSaveService.save(toolPlainObject.newTool()).id().toPlainObject();
+        return this.toolSaveService.create(toolPlainObject.newTool()).toPlainObject();
     }
 }

@@ -8,11 +8,13 @@ import java.util.List;
 
 @Mapper
 public interface ToolMapper {
-    void save(final Tool tool);
+    void insert(final Tool tool);
 
     List<Tool> findAll();
 
     Tool findBy(final ToolId id);
+
+    void update(final Tool tool);
 
     void delete(final Tool tool);
 }

@@ -23,6 +23,11 @@
         FROM public.tool t
         WHERE t.id = #{value};
     </select>
+    <update id="update" parameterType="&Tool;">
+        UPDATE public.tool t
+        SET name = #{name.value}
+        WHERE t.id = #{id.value};
+    </update>
     <delete id="delete" parameterType="&Tool;">
         DELETE
         FROM public.tool t
