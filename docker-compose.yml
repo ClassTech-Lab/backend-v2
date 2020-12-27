@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  postgres:
+    build: docker/database/postgresql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_user: postgres
+      LANG: ja_JP.utf8
+    ports:
+      - 60553:5432
