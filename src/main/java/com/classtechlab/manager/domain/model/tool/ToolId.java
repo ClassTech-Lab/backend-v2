@@ -23,12 +23,4 @@ public class ToolId {
     boolean isEqualTo(final ToolId other) {
         return this.value.equals(other.value);
     }
-
-    public static class PlainObject {
-        private final String id;
-
-        private PlainObject(final ToolId toolId) {
-            this.id = toolId.string();
-        }
-    }
 }
