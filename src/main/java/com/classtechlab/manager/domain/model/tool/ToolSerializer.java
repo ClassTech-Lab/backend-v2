@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import java.io.IOException;
 
-public class ToolSerializer extends StdSerializer<Tool> {
+class ToolSerializer extends StdSerializer<Tool> {
     protected ToolSerializer() {
         this((Class<Tool>) null);
     }
