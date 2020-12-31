@@ -3,10 +3,10 @@ package com.classtechlab.manager.domain.model.tool;
 import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.UUID;
-
+@JsonSerialize(using = ToolSerializer.class)
 public class Tool implements Identifiable<Tool> {
     private ToolId id;
     private Name name;
@@ -23,8 +23,8 @@ public class Tool implements Identifiable<Tool> {
         return this.id;
     }
 
-    public PlainObject toPlainObject() {
-        return new PlainObject(this);
+    Name name() {
+        return this.name;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Tool implements Identifiable<Tool> {
     }
 
     public static class PlainObject {
-        private UUID id;
+        private String id;
         private String name;
 
         private PlainObject() {

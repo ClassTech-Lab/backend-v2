@@ -13,8 +13,8 @@ public class ToolId {
         this(UUID.randomUUID());
     }
 
-    UUID value() {
-        return this.value;
+    String value() {
+        return this.value.toString();
     }
 
     public PlainObject toPlainObject() {
@@ -26,7 +26,7 @@ public class ToolId {
     }
 
     public static class PlainObject {
-        private final UUID id;
+        private final String id;
 
         private PlainObject(final ToolId toolId) {
             this.id = toolId.value();

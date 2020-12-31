@@ -24,15 +24,16 @@ public class ToolController {
     }
 
     @GetMapping
-    public List<Tool.PlainObject> get() {
-        return this.toolReadService.readAll().values(Tool::toPlainObject);
+    public List<Tool> get() {
+        List<Tool> toolList = this.toolReadService.readAll().values(tool -> tool);
+        return toolList;
     }
 
     @GetMapping("{id}")
-    public Tool.PlainObject get(@PathVariable final ToolId id) {
+    public Tool get(@PathVariable final ToolId id) {
         final Tool tool = this.toolReadService.read(id);
         if (tool == null) throw new NotFoundException();
-        return tool.toPlainObject();
+        return tool;
     }
 
     @PutMapping("{id}")
