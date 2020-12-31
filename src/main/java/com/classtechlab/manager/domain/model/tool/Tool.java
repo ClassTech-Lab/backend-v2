@@ -40,12 +40,12 @@ public class Tool implements Identifiable<Tool> {
         }
 
         private PlainObject(final Tool tool) {
-            this.id = tool.id.value();
-            this.name = tool.name.value();
+            this.id = tool.id.string();
+            this.name = tool.name.string();
         }
 
         public Tool toTool(final ToolId id) throws IllegalArgumentException {
-            if (this.id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
+            if (id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
             return new Tool(id, new Name(this.name));
         }
 

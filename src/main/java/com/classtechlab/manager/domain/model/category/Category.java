@@ -41,7 +41,7 @@ public class Category implements Identifiable<Category> {
 
         private PlainObject(final Category category) {
             this.id = category.id.value();
-            this.name = category.name.value();
+            this.name = category.name.string();
         }
 
         public Category toCategory(final CategoryId id) throws IllegalArgumentException {

@@ -1,7 +1,10 @@
 package com.classtechlab.manager.domain.model.tool;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.UUID;
 
+@JsonSerialize(using = ToolIdSerializer.class)
 public class ToolId {
     private final UUID value;
 
@@ -13,12 +16,8 @@ public class ToolId {
         this(UUID.randomUUID());
     }
 
-    String value() {
+    String string() {
         return this.value.toString();
-    }
-
-    public PlainObject toPlainObject() {
-        return new PlainObject(this);
     }
 
     boolean isEqualTo(final ToolId other) {
@@ -29,7 +28,7 @@ public class ToolId {
         private final String id;
 
         private PlainObject(final ToolId toolId) {
-            this.id = toolId.value();
+            this.id = toolId.string();
         }
     }
 }

@@ -48,9 +48,9 @@ public class ToolController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ToolId.PlainObject post(@RequestBody final Tool.PlainObject toolPlainObject) {
+    public ToolId post(@RequestBody final Tool.PlainObject toolPlainObject) {
         try {
-            return this.toolSaveService.create(toolPlainObject.toTool()).toPlainObject();
+            return this.toolSaveService.create(toolPlainObject.toTool());
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

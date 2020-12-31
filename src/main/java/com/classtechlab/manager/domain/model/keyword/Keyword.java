@@ -41,7 +41,7 @@ public class Keyword implements Identifiable<Keyword> {
 
         private PlainObject(final Keyword keyword) {
             this.id = keyword.id.value();
-            this.name = keyword.name.value();
+            this.name = keyword.name.string();
         }
 
         public Keyword toKeyword(final KeywordId id) throws IllegalArgumentException {
