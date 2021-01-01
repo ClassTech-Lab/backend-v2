@@ -25,7 +25,7 @@ public class Pack<T extends Identifiable<T>> {
         return this.items.stream().map(mapper).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<T> toList() {
+    List<T> toList() {
         return Collections.unmodifiableList(this.items);
     }
 }

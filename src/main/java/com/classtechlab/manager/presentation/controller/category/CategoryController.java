@@ -5,12 +5,11 @@ import com.classtechlab.manager.application.service.category.CategorySaveService
 import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.category.Category;
 import com.classtechlab.manager.domain.model.category.CategoryId;
+import com.classtechlab.manager.domain.type.item.Pack;
 import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
 import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("category")
@@ -24,8 +23,8 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<Category.PlainObject> get() {
-        return this.categoryReadService.readAll().map(Category::toPlainObject);
+    public Pack<Category> get() {
+        return this.categoryReadService.readAll();
     }
 
     @GetMapping("{id}")
