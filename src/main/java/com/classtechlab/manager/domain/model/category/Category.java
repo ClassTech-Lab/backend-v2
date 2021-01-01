@@ -1,11 +1,9 @@
 package com.classtechlab.manager.domain.model.category;
 
-import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.apache.commons.lang3.StringUtils;
 
 @JsonSerialize(using = CategorySerializer.class)
 @JsonDeserialize(using = CategoryDeserializer.class)
@@ -40,30 +38,9 @@ public class Category implements Identifiable<Category> {
     public Category copy() {
         return this.copy(new CategoryId());
     }
+
     @Override
     public boolean isEqualTo(final Category other) {
         return this.id.isEqualTo(other.id);
-    }
-
-    public static class PlainObject {
-        private String id;
-        private String name;
-
-        private PlainObject() {
-        }
-
-        private PlainObject(final Category category) {
-            this.id = category.id.string();
-            this.name = category.name().string();
-        }
-
-        public Category toCategory(final CategoryId id) throws IllegalArgumentException {
-            if (id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            return new Category(id, new Name(this.name));
-        }
-
-        public Category toCategory() throws IllegalArgumentException {
-            return this.toCategory(new CategoryId());
-        }
     }
 }
