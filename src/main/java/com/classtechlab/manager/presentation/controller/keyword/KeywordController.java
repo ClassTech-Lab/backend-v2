@@ -45,9 +45,9 @@ public class KeywordController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public KeywordId.PlainObject post(@RequestBody final Keyword.PlainObject keywordPlainObject) {
+    public KeywordId post(@RequestBody final Keyword.PlainObject keywordPlainObject) {
         try {
-            return this.keywordSaveService.create(keywordPlainObject.toKeyword()).toPlainObject();
+            return this.keywordSaveService.create(keywordPlainObject.toKeyword());
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

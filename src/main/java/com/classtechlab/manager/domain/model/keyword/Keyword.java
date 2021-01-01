@@ -33,14 +33,14 @@ public class Keyword implements Identifiable<Keyword> {
     }
 
     public static class PlainObject {
-        private UUID id;
+        private String id;
         private String name;
 
         private PlainObject() {
         }
 
         private PlainObject(final Keyword keyword) {
-            this.id = keyword.id.value();
+            this.id = keyword.id.string();
             this.name = keyword.name.string();
         }
 

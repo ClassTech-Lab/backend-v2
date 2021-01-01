@@ -1,7 +1,10 @@
 package com.classtechlab.manager.domain.model.keyword;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.UUID;
 
+@JsonSerialize(using = KeywordIdSerializer.class)
 public class KeywordId {
     private final UUID value;
 
@@ -13,8 +16,8 @@ public class KeywordId {
         this.value = value;
     }
 
-    UUID value() {
-        return this.value;
+    String string() {
+        return this.value.toString();
     }
 
     boolean isEqualTo(final KeywordId other) {
@@ -26,10 +29,10 @@ public class KeywordId {
     }
 
     public static class PlainObject {
-        private final UUID id;
+        private final String id;
 
         private PlainObject(final KeywordId keywordId) {
-            this.id = keywordId.value();
+            this.id = keywordId.string();
         }
     }
 }
