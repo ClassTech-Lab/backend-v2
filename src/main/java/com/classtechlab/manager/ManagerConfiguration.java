@@ -1,7 +1,7 @@
 package com.classtechlab.manager;
 
-import com.classtechlab.manager._configuration.converter.category.StringToCategoryIdConverter;
-import com.classtechlab.manager._configuration.converter.keyword.StringToKeywordIdConverter;
+import com.classtechlab.manager.domain.model.category.StringToCategoryIdConverter;
+import com.classtechlab.manager.domain.model.keyword.StringToKeywordIdConverter;
 import com.classtechlab.manager.domain.model.tool.StringToToolIdConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
