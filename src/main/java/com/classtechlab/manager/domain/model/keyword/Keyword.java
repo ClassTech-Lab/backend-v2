@@ -3,10 +3,10 @@ package com.classtechlab.manager.domain.model.keyword;
 import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.UUID;
-
+@JsonSerialize(using = KeywordSerializer.class)
 public class Keyword implements Identifiable<Keyword> {
     private KeywordId id;
     private Name name;
@@ -21,6 +21,10 @@ public class Keyword implements Identifiable<Keyword> {
 
     public KeywordId id() {
         return this.id;
+    }
+
+    public Name name() {
+        return this.name;
     }
 
     public PlainObject toPlainObject() {

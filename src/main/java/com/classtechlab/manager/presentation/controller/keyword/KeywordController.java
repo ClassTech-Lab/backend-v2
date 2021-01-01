@@ -5,12 +5,11 @@ import com.classtechlab.manager.application.service.keyword.KeywordSaveService;
 import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.keyword.Keyword;
 import com.classtechlab.manager.domain.model.keyword.KeywordId;
+import com.classtechlab.manager.domain.type.item.Pack;
 import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
 import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("keyword")
@@ -24,13 +23,13 @@ public class KeywordController {
     }
 
     @GetMapping
-    public List<Keyword.PlainObject> get() {
-        return this.keywordReadService.readAll().map(Keyword::toPlainObject);
+    public Pack<Keyword> get() {
+        return this.keywordReadService.readAll();
     }
 
     @GetMapping("{id}")
-    public Keyword.PlainObject get(@PathVariable final KeywordId id) {
-        return this.keywordReadService.readBy(id).toPlainObject();
+    public Keyword get(@PathVariable final KeywordId id) {
+        return this.keywordReadService.readBy(id);
     }
 
     @PutMapping("{id}")
