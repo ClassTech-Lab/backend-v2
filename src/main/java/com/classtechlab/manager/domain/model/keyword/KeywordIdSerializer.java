@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import java.io.IOException;
 
-public class KeywordIdSerializer extends StdSerializer<KeywordId> {
+class KeywordIdSerializer extends StdSerializer<KeywordId> {
     private KeywordIdSerializer() {
         this((Class<KeywordId>) null);
     }

@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.util.UUID;
 
 class KeywordDeserializer extends StdDeserializer<Keyword> {
+    private KeywordDeserializer() {
+        this((Class<?>) null);
+    }
+
     protected KeywordDeserializer(Class<?> vc) {
         super(vc);
     }
