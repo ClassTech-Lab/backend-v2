@@ -1,11 +1,9 @@
 package com.classtechlab.manager.domain.model.keyword;
 
-import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.apache.commons.lang3.StringUtils;
 
 @JsonSerialize(using = KeywordSerializer.class)
 @JsonDeserialize(using = KeywordDeserializer.class)
@@ -41,34 +39,8 @@ public class Keyword implements Identifiable<Keyword> {
         return copy(new KeywordId());
     }
 
-    public PlainObject toPlainObject() {
-        return new PlainObject(this);
-    }
-
     @Override
     public boolean isEqualTo(final Keyword other) {
         return this.id.isEqualTo(other.id);
-    }
-
-    public static class PlainObject {
-        private String id;
-        private String name;
-
-        private PlainObject() {
-        }
-
-        private PlainObject(final Keyword keyword) {
-            this.id = keyword.id.string();
-            this.name = keyword.name.string();
-        }
-
-        public Keyword toKeyword(final KeywordId id) throws IllegalArgumentException {
-            if (id == null || StringUtils.isBlank(this.name)) throw new IllegalArgumentException();
-            return new Keyword(id, new Name(this.name));
-        }
-
-        public Keyword toKeyword() throws IllegalArgumentException {
-            return this.toKeyword(new KeywordId());
-        }
     }
 }

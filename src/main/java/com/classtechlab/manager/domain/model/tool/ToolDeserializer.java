@@ -32,7 +32,6 @@ class ToolDeserializer extends StdDeserializer<Tool> {
     public Tool deserialize(final JsonParser p, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
         final JsonNode node = p.getCodec().readTree(p);
         final Name name = new Name(node.get("name").textValue());
-        final ToolId id;
         if (node.hasNonNull("id")) {
             return new Tool(new ToolId(UUID.fromString(node.get("id").textValue())), name);
         }

@@ -32,7 +32,6 @@ class CategoryDeserializer extends StdDeserializer<Category> {
     public Category deserialize(final JsonParser p, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
         final JsonNode node = p.getCodec().readTree(p);
         final Name name = new Name(node.get("name").textValue());
-        final CategoryId id;
         if (node.hasNonNull("id")) {
             return new Category(new CategoryId(UUID.fromString(node.get("id").textValue())), name);
         }
