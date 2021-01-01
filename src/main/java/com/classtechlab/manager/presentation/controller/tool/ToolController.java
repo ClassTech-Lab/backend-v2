@@ -25,8 +25,7 @@ public class ToolController {
 
     @GetMapping
     public List<Tool> get() {
-        List<Tool> toolList = this.toolReadService.readAll().values(tool -> tool);
-        return toolList;
+        return this.toolReadService.readAll().toList();
     }
 
     @GetMapping("{id}")
@@ -38,21 +37,13 @@ public class ToolController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void put(@PathVariable final ToolId id, @RequestBody final Tool.PlainObject toolPlainObject) {
-        try {
-            if (!this.toolSaveService.modify(toolPlainObject.toTool(id))) throw new NotFoundException();
-        } catch (IllegalArgumentException e) {
-            throw new BadRequestException(e);
-        }
+    public void put(@PathVariable final ToolId id, @RequestBody final Tool tool) {
+        if (!this.toolSaveService.modify(tool.copy(id))) throw new NotFoundException();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ToolId post(@RequestBody final Tool.PlainObject toolPlainObject) {
-        try {
-            return this.toolSaveService.create(toolPlainObject.toTool());
-        } catch (IllegalArgumentException e) {
-            throw new BadRequestException(e);
-        }
+    public ToolId post(@RequestBody final Tool tool) {
+        return this.toolSaveService.create(tool.copy());
     }
 }

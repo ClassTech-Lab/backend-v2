@@ -1,6 +1,7 @@
 package com.classtechlab.manager.domain.type.item;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
@@ -19,5 +20,9 @@ public class Pack<T extends Identifiable<T>> {
 
     public <R> List<R> values(Function<? super T, ? extends R> mapper) {
         return this.items.stream().map(mapper).collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<T> toList() {
+        return Collections.unmodifiableList(this.items);
     }
 }
