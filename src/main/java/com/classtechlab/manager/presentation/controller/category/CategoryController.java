@@ -2,11 +2,9 @@ package com.classtechlab.manager.presentation.controller.category;
 
 import com.classtechlab.manager.application.service.category.CategoryReadService;
 import com.classtechlab.manager.application.service.category.CategorySaveService;
-import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.category.Category;
 import com.classtechlab.manager.domain.model.category.CategoryId;
 import com.classtechlab.manager.domain.type.item.Pack;
-import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
 import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -34,21 +32,13 @@ public class CategoryController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void put(@PathVariable final CategoryId id, @RequestBody final Category.PlainObject categoryPlainObject) {
-        try {
-            if (!this.categorySaveService.modify(categoryPlainObject.toCategory(id))) throw new NotFoundException();
-        } catch (IllegalArgumentException e) {
-            throw new BadRequestException(e);
-        }
+    public void put(@PathVariable final CategoryId id, @RequestBody final Category category) {
+        if (!this.categorySaveService.modify(category.copy(id))) throw new NotFoundException();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CategoryId post(@RequestBody final Category.PlainObject categoryPlainObject) {
-        try {
-            return this.categorySaveService.create(categoryPlainObject.toCategory());
-        } catch (IllegalArgumentException e) {
-            throw new BadRequestException(e);
-        }
+    public CategoryId post(@RequestBody final Category category) {
+        return this.categorySaveService.create(category.copy());
     }
 }
