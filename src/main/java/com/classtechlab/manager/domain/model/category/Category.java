@@ -5,8 +5,6 @@ import com.classtechlab.manager.domain.type.item.Identifiable;
 import com.classtechlab.manager.domain.type.name.Name;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.UUID;
-
 public class Category implements Identifiable<Category> {
     private CategoryId id;
     private Name name;
@@ -33,14 +31,14 @@ public class Category implements Identifiable<Category> {
     }
 
     public static class PlainObject {
-        private UUID id;
+        private String id;
         private String name;
 
         private PlainObject() {
         }
 
         private PlainObject(final Category category) {
-            this.id = category.id.value();
+            this.id = category.id.string();
             this.name = category.name.string();
         }
 

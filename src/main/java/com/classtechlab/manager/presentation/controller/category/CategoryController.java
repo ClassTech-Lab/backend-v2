@@ -45,9 +45,9 @@ public class CategoryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CategoryId.PlainObject post(@RequestBody final Category.PlainObject categoryPlainObject) {
+    public CategoryId post(@RequestBody final Category.PlainObject categoryPlainObject) {
         try {
-            return this.categorySaveService.create(categoryPlainObject.toCategory()).toPlainObject();
+            return this.categorySaveService.create(categoryPlainObject.toCategory());
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

@@ -1,7 +1,10 @@
 package com.classtechlab.manager.domain.model.category;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.UUID;
 
+@JsonSerialize(using = CategoryIdSerializer.class)
 public class CategoryId {
     private final UUID value;
 
@@ -13,8 +16,8 @@ public class CategoryId {
         this(UUID.randomUUID());
     }
 
-    UUID value() {
-        return this.value;
+    String string() {
+        return this.value.toString();
     }
 
     public PlainObject toPlainObject() {
@@ -26,10 +29,10 @@ public class CategoryId {
     }
 
     public static class PlainObject {
-        private final UUID id;
+        private final String id;
 
         public PlainObject(final CategoryId categoryId) {
-            this.id = categoryId.value();
+            this.id = categoryId.string();
         }
     }
 }
