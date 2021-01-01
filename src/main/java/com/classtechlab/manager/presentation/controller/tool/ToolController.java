@@ -2,15 +2,12 @@ package com.classtechlab.manager.presentation.controller.tool;
 
 import com.classtechlab.manager.application.service.tool.ToolReadService;
 import com.classtechlab.manager.application.service.tool.ToolSaveService;
-import com.classtechlab.manager.domain.exception.IllegalArgumentException;
 import com.classtechlab.manager.domain.model.tool.Tool;
 import com.classtechlab.manager.domain.model.tool.ToolId;
-import com.classtechlab.manager.presentation.controller.exception.BadRequestException;
+import com.classtechlab.manager.domain.type.item.Pack;
 import com.classtechlab.manager.presentation.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("tool")
@@ -24,8 +21,8 @@ public class ToolController {
     }
 
     @GetMapping
-    public List<Tool> get() {
-        return this.toolReadService.readAll().toList();
+    public Pack<Tool> get() {
+        return this.toolReadService.readAll();
     }
 
     @GetMapping("{id}")

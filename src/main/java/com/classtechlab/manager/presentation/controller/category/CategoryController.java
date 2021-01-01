@@ -25,7 +25,7 @@ public class CategoryController {
 
     @GetMapping
     public List<Category.PlainObject> get() {
-        return this.categoryReadService.readAll().values(Category::toPlainObject);
+        return this.categoryReadService.readAll().map(Category::toPlainObject);
     }
 
     @GetMapping("{id}")

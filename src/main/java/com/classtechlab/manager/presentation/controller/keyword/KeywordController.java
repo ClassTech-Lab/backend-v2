@@ -25,7 +25,7 @@ public class KeywordController {
 
     @GetMapping
     public List<Keyword.PlainObject> get() {
-        return this.keywordReadService.readAll().values(Keyword::toPlainObject);
+        return this.keywordReadService.readAll().map(Keyword::toPlainObject);
     }
 
     @GetMapping("{id}")
