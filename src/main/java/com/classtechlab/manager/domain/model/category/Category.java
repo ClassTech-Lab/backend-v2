@@ -27,10 +27,6 @@ public class Category implements Identifiable<Category> {
         return this.name;
     }
 
-    public PlainObject toPlainObject() {
-        return new PlainObject(this);
-    }
-
     @Override
     public boolean isEqualTo(final Category other) {
         return this.id.isEqualTo(other.id);

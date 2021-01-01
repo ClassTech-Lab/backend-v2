@@ -20,19 +20,7 @@ public class CategoryId {
         return this.value.toString();
     }
 
-    public PlainObject toPlainObject() {
-        return new PlainObject(this);
-    }
-
     boolean isEqualTo(final CategoryId other) {
         return this.value.equals(other.value);
-    }
-
-    public static class PlainObject {
-        private final String id;
-
-        public PlainObject(final CategoryId categoryId) {
-            this.id = categoryId.string();
-        }
     }
 }
