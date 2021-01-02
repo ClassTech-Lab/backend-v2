@@ -20,7 +20,21 @@ public class KeywordId {
         return this.value.toString();
     }
 
+    private UUID uuid() {
+        return this.value;
+    }
+
     boolean isEqualTo(final KeywordId other) {
         return this.value.equals(other.value);
+    }
+
+    static class PlainObject {
+        private UUID id;
+
+        static PlainObject parse(final KeywordId keywordId) {
+            final PlainObject po = new PlainObject();
+            po.id = keywordId.uuid();
+            return po;
+        }
     }
 }
