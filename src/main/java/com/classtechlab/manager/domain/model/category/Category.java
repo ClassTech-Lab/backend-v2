@@ -43,4 +43,16 @@ public class Category implements Identifiable<Category> {
     public boolean isEqualTo(final Category other) {
         return this.id.isEqualTo(other.id);
     }
+
+    static class PlainObject {
+        String id;
+        String name;
+
+        static PlainObject of(final Category category) {
+            final PlainObject po = new PlainObject();
+            po.id = category.id().string();
+            po.name = category.name().string();
+            return po;
+        }
+    }
 }
