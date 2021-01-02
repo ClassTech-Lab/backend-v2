@@ -16,8 +16,8 @@ public class CategoryId {
         this(UUID.randomUUID());
     }
 
-    String string() {
-        return this.value.toString();
+    UUID uuid() {
+        return this.value;
     }
 
     boolean isEqualTo(final CategoryId other) {
@@ -25,11 +25,11 @@ public class CategoryId {
     }
 
     static class PlainObject {
-        private String id;
+        private UUID id;
 
-        static PlainObject of(final CategoryId categoryId) {
+        static PlainObject parse(final CategoryId categoryId) {
             final PlainObject po = new PlainObject();
-            po.id = categoryId.string();
+            po.id = categoryId.uuid();
             return po;
         }
     }

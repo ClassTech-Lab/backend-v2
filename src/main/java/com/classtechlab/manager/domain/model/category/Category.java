@@ -5,6 +5,8 @@ import com.classtechlab.manager.domain.type.name.Name;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.UUID;
+
 @JsonSerialize(using = CategorySerializer.class)
 @JsonDeserialize(using = CategoryDeserializer.class)
 public class Category implements Identifiable<Category> {
@@ -14,12 +16,12 @@ public class Category implements Identifiable<Category> {
     private Category() {
     }
 
-    Category(final CategoryId id, final Name name) {
+    private Category(final CategoryId id, final Name name) {
         this.id = id;
         this.name = name;
     }
 
-    Category(final Name name) {
+    private Category(final Name name) {
         this(new CategoryId(), name);
     }
 
@@ -27,7 +29,7 @@ public class Category implements Identifiable<Category> {
         return this.id;
     }
 
-    Name name() {
+    private Name name() {
         return this.name;
     }
 
@@ -45,14 +47,20 @@ public class Category implements Identifiable<Category> {
     }
 
     static class PlainObject {
-        String id;
-        String name;
+        private UUID id;
+        private String name;
 
-        static PlainObject of(final Category category) {
+        static PlainObject parse(final Category category) {
             final PlainObject po = new PlainObject();
-            po.id = category.id().string();
+            po.id = category.id().uuid();
             po.name = category.name().string();
             return po;
+        }
+
+        Category construct() {
+            final Name name = new Name(this.name);
+            if (this.id == null) return new Category(name);
+            return new Category(new CategoryId(id), name);
         }
     }
 }
