@@ -23,4 +23,14 @@ public class CategoryId {
     boolean isEqualTo(final CategoryId other) {
         return this.value.equals(other.value);
     }
+
+    static class PlainObject {
+        private String id;
+
+        static PlainObject of(final CategoryId categoryId) {
+            final PlainObject po = new PlainObject();
+            po.id = categoryId.string();
+            return po;
+        }
+    }
 }
