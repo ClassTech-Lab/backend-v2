@@ -16,11 +16,21 @@ public class ToolId {
         this(UUID.randomUUID());
     }
 
-    String string() {
-        return this.value.toString();
+    UUID uuid() {
+        return this.value;
     }
 
     boolean isEqualTo(final ToolId other) {
         return this.value.equals(other.value);
+    }
+
+    static class POJO {
+        private UUID id;
+
+        static POJO parse(final ToolId toolId) {
+            final POJO pojo = new POJO();
+            pojo.id = toolId.uuid();
+            return pojo;
+        }
     }
 }

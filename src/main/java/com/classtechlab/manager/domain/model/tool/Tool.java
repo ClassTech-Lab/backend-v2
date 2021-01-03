@@ -5,6 +5,8 @@ import com.classtechlab.manager.domain.type.name.Name;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.UUID;
+
 @JsonSerialize(using = ToolSerializer.class)
 @JsonDeserialize(using = ToolDeserializer.class)
 public class Tool implements Identifiable<Tool> {
@@ -14,12 +16,12 @@ public class Tool implements Identifiable<Tool> {
     private Tool() {
     }
 
-    Tool(final ToolId id, final Name name) {
+    private Tool(final ToolId id, final Name name) {
         this.id = id;
         this.name = name;
     }
 
-    Tool(final Name name) {
+    private Tool(final Name name) {
         this(new ToolId(), name);
     }
 
@@ -27,7 +29,7 @@ public class Tool implements Identifiable<Tool> {
         return this.id;
     }
 
-    Name name() {
+    private Name name() {
         return this.name;
     }
 
@@ -42,5 +44,23 @@ public class Tool implements Identifiable<Tool> {
     @Override
     public boolean isEqualTo(final Tool other) {
         return this.id.isEqualTo(other.id);
+    }
+
+    static class POJO {
+        private UUID id;
+        private String name;
+
+        static POJO parse(final Tool tool) {
+            final POJO pojo = new POJO();
+            pojo.id = tool.id().uuid();
+            pojo.name = tool.name().string();
+            return pojo;
+        }
+
+        Tool construct() {
+            final Name name = new Name(this.name);
+            if (this.id == null) return new Tool(name);
+            return new Tool(new ToolId(this.id), name);
+        }
     }
 }

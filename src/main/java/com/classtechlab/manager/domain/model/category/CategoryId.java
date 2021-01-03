@@ -24,13 +24,13 @@ public class CategoryId {
         return this.value.equals(other.value);
     }
 
-    static class PlainObject {
+    static class POJO {
         private UUID id;
 
-        static PlainObject parse(final CategoryId categoryId) {
-            final PlainObject po = new PlainObject();
-            po.id = categoryId.uuid();
-            return po;
+        static POJO parse(final CategoryId categoryId) {
+            final POJO pojo = new POJO();
+            pojo.id = categoryId.uuid();
+            return pojo;
         }
     }
 }

@@ -30,8 +30,6 @@ class ToolIdSerializer extends StdSerializer<ToolId> {
 
     @Override
     public void serialize(final ToolId value, final JsonGenerator gen, final SerializerProvider provider) throws IOException {
-        gen.writeStartObject();
-        gen.writeStringField("id", value.string());
-        gen.writeEndObject();
+        gen.writeObject(ToolId.POJO.parse(value));
     }
 }

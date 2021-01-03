@@ -30,6 +30,6 @@ class KeywordIdSerializer extends StdSerializer<KeywordId> {
 
     @Override
     public void serialize(final KeywordId value, final JsonGenerator gen, final SerializerProvider provider) throws IOException {
-        gen.writeObject(KeywordId.PlainObject.parse(value));
+        gen.writeObject(KeywordId.POJO.parse(value));
     }
 }

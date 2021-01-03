@@ -27,6 +27,6 @@ class CategoryDeserializer extends StdDeserializer<Category> {
 
     @Override
     public Category deserialize(final JsonParser p, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        return p.readValueAs(Category.PlainObject.class).construct();
+        return p.readValueAs(Category.POJO.class).construct();
     }
 }

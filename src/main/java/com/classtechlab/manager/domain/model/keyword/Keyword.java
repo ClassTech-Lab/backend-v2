@@ -5,6 +5,8 @@ import com.classtechlab.manager.domain.type.name.Name;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.UUID;
+
 @JsonSerialize(using = KeywordSerializer.class)
 @JsonDeserialize(using = KeywordDeserializer.class)
 public class Keyword implements Identifiable<Keyword> {
@@ -14,12 +16,12 @@ public class Keyword implements Identifiable<Keyword> {
     private Keyword() {
     }
 
-    Keyword(final KeywordId id, final Name name) {
+    private Keyword(final KeywordId id, final Name name) {
         this.id = id;
         this.name = name;
     }
 
-    Keyword(final Name name) {
+    private Keyword(final Name name) {
         this(new KeywordId(), name);
     }
 
@@ -27,7 +29,7 @@ public class Keyword implements Identifiable<Keyword> {
         return this.id;
     }
 
-    public Name name() {
+    private Name name() {
         return this.name;
     }
 
@@ -42,5 +44,23 @@ public class Keyword implements Identifiable<Keyword> {
     @Override
     public boolean isEqualTo(final Keyword other) {
         return this.id.isEqualTo(other.id);
+    }
+
+    static class POJO {
+        private UUID id;
+        private String name;
+
+        static Keyword.POJO parse(final Keyword keyword) {
+            final Keyword.POJO pojo = new Keyword.POJO();
+            pojo.id = keyword.id().uuid();
+            pojo.name = keyword.name().string();
+            return pojo;
+        }
+
+        Keyword construct() {
+            final Name name = new Name(this.name);
+            if (this.id == null) return new Keyword(name);
+            return new Keyword(new KeywordId(id), name);
+        }
     }
 }

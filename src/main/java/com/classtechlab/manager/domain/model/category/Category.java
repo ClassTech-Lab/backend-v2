@@ -46,15 +46,15 @@ public class Category implements Identifiable<Category> {
         return this.id.isEqualTo(other.id);
     }
 
-    static class PlainObject {
+    static class POJO {
         private UUID id;
         private String name;
 
-        static PlainObject parse(final Category category) {
-            final PlainObject po = new PlainObject();
-            po.id = category.id().uuid();
-            po.name = category.name().string();
-            return po;
+        static POJO parse(final Category category) {
+            final POJO pojo = new POJO();
+            pojo.id = category.id().uuid();
+            pojo.name = category.name().string();
+            return pojo;
         }
 
         Category construct() {

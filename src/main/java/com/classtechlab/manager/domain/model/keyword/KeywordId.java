@@ -8,19 +8,15 @@ import java.util.UUID;
 public class KeywordId {
     private final UUID value;
 
-    KeywordId() {
-        this(UUID.randomUUID());
-    }
-
     KeywordId(final UUID value) {
         this.value = value;
     }
 
-    String string() {
-        return this.value.toString();
+    KeywordId() {
+        this(UUID.randomUUID());
     }
 
-    private UUID uuid() {
+    UUID uuid() {
         return this.value;
     }
 
@@ -28,13 +24,13 @@ public class KeywordId {
         return this.value.equals(other.value);
     }
 
-    static class PlainObject {
+    static class POJO {
         private UUID id;
 
-        static PlainObject parse(final KeywordId keywordId) {
-            final PlainObject po = new PlainObject();
-            po.id = keywordId.uuid();
-            return po;
+        static POJO parse(final KeywordId keywordId) {
+            final POJO pojo = new POJO();
+            pojo.id = keywordId.uuid();
+            return pojo;
         }
     }
 }

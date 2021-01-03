@@ -30,6 +30,6 @@ class CategoryIdSerializer extends StdSerializer<CategoryId> {
 
     @Override
     public void serialize(final CategoryId value, final JsonGenerator gen, final SerializerProvider provider) throws IOException {
-        gen.writeObject(CategoryId.PlainObject.parse(value));
+        gen.writeObject(CategoryId.POJO.parse(value));
     }
 }
