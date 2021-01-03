@@ -2,6 +2,7 @@ package com.classtechlab.manager;
 
 import com.classtechlab.manager.domain.model.category.StringToCategoryIdConverter;
 import com.classtechlab.manager.domain.model.keyword.StringToKeywordIdConverter;
+import com.classtechlab.manager.domain.model.provider.StringToProviderIdConverter;
 import com.classtechlab.manager.domain.model.tool.StringToToolIdConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -14,5 +15,6 @@ public class ManagerConfiguration implements WebMvcConfigurer {
         registry.addConverter(new StringToToolIdConverter());
         registry.addConverter(new StringToKeywordIdConverter());
         registry.addConverter(new StringToCategoryIdConverter());
+        registry.addConverter(new StringToProviderIdConverter());
     }
 }

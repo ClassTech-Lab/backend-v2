@@ -1,30 +1,36 @@
 package com.classtechlab.manager.domain.model.provider;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.UUID;
 
+@JsonSerialize(using = ProviderIdSerializer.class)
 public class ProviderId {
     private final UUID value;
 
-    public ProviderId(final UUID value) {
+    ProviderId(final UUID value) {
         this.value = value;
     }
 
-    public ProviderId() {
+    ProviderId() {
         this(UUID.randomUUID());
     }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        final ProviderId that = (ProviderId) o;
-
-        return value.equals(that.value);
+    UUID uuid() {
+        return this.value;
     }
 
-    @Override
-    public int hashCode() {
-        return value.hashCode();
+    boolean isEquals(final ProviderId other) {
+        return this.value.equals(other.value);
+    }
+
+    static class POJO {
+        private UUID id;
+
+        static POJO parse(final ProviderId providerId) {
+            final POJO pojo = new POJO();
+            pojo.id = providerId.uuid();
+            return pojo;
+        }
     }
 }
