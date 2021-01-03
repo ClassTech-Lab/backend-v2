@@ -12,19 +12,19 @@ class ToolSerializer extends StdSerializer<Tool> {
         this((Class<Tool>) null);
     }
 
-    protected ToolSerializer(Class<Tool> t) {
+    protected ToolSerializer(final Class<Tool> t) {
         super(t);
     }
 
-    protected ToolSerializer(JavaType type) {
+    protected ToolSerializer(final JavaType type) {
         super(type);
     }
 
-    protected ToolSerializer(Class<?> t, boolean dummy) {
+    protected ToolSerializer(final Class<?> t, boolean dummy) {
         super(t, dummy);
     }
 
-    protected ToolSerializer(StdSerializer<?> src) {
+    protected ToolSerializer(final StdSerializer<?> src) {
         super(src);
     }
 

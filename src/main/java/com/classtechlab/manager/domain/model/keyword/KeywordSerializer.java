@@ -12,19 +12,19 @@ class KeywordSerializer extends StdSerializer<Keyword> {
         this((Class<Keyword>) null);
     }
 
-    protected KeywordSerializer(Class<Keyword> t) {
+    protected KeywordSerializer(final Class<Keyword> t) {
         super(t);
     }
 
-    protected KeywordSerializer(JavaType type) {
+    protected KeywordSerializer(final JavaType type) {
         super(type);
     }
 
-    protected KeywordSerializer(Class<?> t, boolean dummy) {
+    protected KeywordSerializer(final Class<?> t, boolean dummy) {
         super(t, dummy);
     }
 
-    protected KeywordSerializer(StdSerializer<?> src) {
+    protected KeywordSerializer(final StdSerializer<?> src) {
         super(src);
     }
 

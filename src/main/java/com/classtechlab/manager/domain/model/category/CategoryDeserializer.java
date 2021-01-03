@@ -13,15 +13,15 @@ class CategoryDeserializer extends StdDeserializer<Category> {
         this((Class<?>) null);
     }
 
-    protected CategoryDeserializer(Class<?> vc) {
+    protected CategoryDeserializer(final Class<?> vc) {
         super(vc);
     }
 
-    protected CategoryDeserializer(JavaType valueType) {
+    protected CategoryDeserializer(final JavaType valueType) {
         super(valueType);
     }
 
-    protected CategoryDeserializer(StdDeserializer<?> src) {
+    protected CategoryDeserializer(final StdDeserializer<?> src) {
         super(src);
     }
 

@@ -12,19 +12,19 @@ class CategorySerializer extends StdSerializer<Category> {
         this((Class<Category>) null);
     }
 
-    protected CategorySerializer(Class<Category> t) {
+    protected CategorySerializer(final Class<Category> t) {
         super(t);
     }
 
-    protected CategorySerializer(JavaType type) {
+    protected CategorySerializer(final JavaType type) {
         super(type);
     }
 
-    protected CategorySerializer(Class<?> t, boolean dummy) {
+    protected CategorySerializer(final Class<?> t, boolean dummy) {
         super(t, dummy);
     }
 
-    protected CategorySerializer(StdSerializer<?> src) {
+    protected CategorySerializer(final StdSerializer<?> src) {
         super(src);
     }
 

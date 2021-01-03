@@ -13,15 +13,15 @@ class ToolDeserializer extends StdDeserializer<Tool> {
         this((Class<?>) null);
     }
 
-    protected ToolDeserializer(Class<?> vc) {
+    protected ToolDeserializer(final Class<?> vc) {
         super(vc);
     }
 
-    protected ToolDeserializer(JavaType valueType) {
+    protected ToolDeserializer(final JavaType valueType) {
         super(valueType);
     }
 
-    protected ToolDeserializer(StdDeserializer<?> src) {
+    protected ToolDeserializer(final StdDeserializer<?> src) {
         super(src);
     }
 

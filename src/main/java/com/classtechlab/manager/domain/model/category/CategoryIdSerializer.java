@@ -12,19 +12,19 @@ class CategoryIdSerializer extends StdSerializer<CategoryId> {
         this((Class<CategoryId>) null);
     }
 
-    protected CategoryIdSerializer(Class<CategoryId> t) {
+    protected CategoryIdSerializer(final Class<CategoryId> t) {
         super(t);
     }
 
-    protected CategoryIdSerializer(JavaType type) {
+    protected CategoryIdSerializer(final JavaType type) {
         super(type);
     }
 
-    protected CategoryIdSerializer(Class<?> t, boolean dummy) {
+    protected CategoryIdSerializer(final Class<?> t, boolean dummy) {
         super(t, dummy);
     }
 
-    protected CategoryIdSerializer(StdSerializer<?> src) {
+    protected CategoryIdSerializer(final StdSerializer<?> src) {
         super(src);
     }
 

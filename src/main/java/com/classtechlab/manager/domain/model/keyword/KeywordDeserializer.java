@@ -13,15 +13,15 @@ class KeywordDeserializer extends StdDeserializer<Keyword> {
         this((Class<?>) null);
     }
 
-    protected KeywordDeserializer(Class<?> vc) {
+    protected KeywordDeserializer(final Class<?> vc) {
         super(vc);
     }
 
-    protected KeywordDeserializer(JavaType valueType) {
+    protected KeywordDeserializer(final JavaType valueType) {
         super(valueType);
     }
 
-    protected KeywordDeserializer(StdDeserializer<?> src) {
+    protected KeywordDeserializer(final StdDeserializer<?> src) {
         super(src);
     }
 
