@@ -10,12 +10,10 @@ import java.util.Set;
  * 学校種別
  */
 public class Type {
-    private final TypeId id;
     private final TypeName name;
     private final Set<GradeId> gradeIds;
 
-    private Type(final TypeId id, final TypeName name, final Set<GradeId> gradeIds) {
-        this.id = id;
+    private Type(final TypeName name, final Set<GradeId> gradeIds) {
         this.name = name;
         this.gradeIds = Collections.unmodifiableSet(gradeIds);
     }
@@ -23,12 +21,12 @@ public class Type {
     public Type add(final GradeId gradeId) {
         final Set<GradeId> gradeIds = new HashSet<>(this.gradeIds);
         gradeIds.add(gradeId);
-        return new Type(this.id, this.name, gradeIds);
+        return new Type(this.name, gradeIds);
     }
 
     public Type remove(final GradeId gradeId) {
         final Set<GradeId> gradeIds = new HashSet<>(this.gradeIds);
         gradeIds.remove(gradeId);
-        return new Type(this.id, this.name, gradeIds);
+        return new Type(this.name, gradeIds);
     }
 }
