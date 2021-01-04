@@ -1,6 +1,6 @@
 package com.classtechlab.manager.domain.model.school.type;
 
-import com.classtechlab.manager.domain.model.school.grade.GradeId;
+import com.classtechlab.manager.domain.model.school.grade.Grade;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -11,22 +11,22 @@ import java.util.Set;
  */
 public class Type {
     private final TypeName name;
-    private final Set<GradeId> gradeIds;
+    private final Set<Grade> grades;
 
-    private Type(final TypeName name, final Set<GradeId> gradeIds) {
+    private Type(final TypeName name, final Set<Grade> grades) {
         this.name = name;
-        this.gradeIds = Collections.unmodifiableSet(gradeIds);
+        this.grades = Collections.unmodifiableSet(grades);
     }
 
-    public Type add(final GradeId gradeId) {
-        final Set<GradeId> gradeIds = new HashSet<>(this.gradeIds);
-        gradeIds.add(gradeId);
-        return new Type(this.name, gradeIds);
+    public Type add(final Grade grade) {
+        final Set<Grade> grades = new HashSet<>(this.grades);
+        grades.add(grade);
+        return new Type(this.name, grades);
     }
 
-    public Type remove(final GradeId gradeId) {
-        final Set<GradeId> gradeIds = new HashSet<>(this.gradeIds);
-        gradeIds.remove(gradeId);
-        return new Type(this.name, gradeIds);
+    public Type remove(final Grade grade) {
+        final Set<Grade> grades = new HashSet<>(this.grades);
+        grades.remove(grade);
+        return new Type(this.name, grades);
     }
 }
