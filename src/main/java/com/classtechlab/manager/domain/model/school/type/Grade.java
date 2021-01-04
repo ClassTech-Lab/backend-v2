@@ -1,4 +1,4 @@
-package com.classtechlab.manager.domain.model.school.grade;
+package com.classtechlab.manager.domain.model.school.type;
 
 import com.classtechlab.manager.domain.type.name.Name;
 

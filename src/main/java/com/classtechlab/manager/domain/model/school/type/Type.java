@@ -1,7 +1,5 @@
 package com.classtechlab.manager.domain.model.school.type;
 
-import com.classtechlab.manager.domain.model.school.grade.Grade;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
