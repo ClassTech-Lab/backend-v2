@@ -13,18 +13,7 @@ public class OrganizationId {
         this(UUID.randomUUID());
     }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        final OrganizationId organizationId = (OrganizationId) o;
-
-        return value.equals(organizationId.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return value.hashCode();
+    boolean isEquals(final OrganizationId other) {
+        return this.value.equals(other.value);
     }
 }
