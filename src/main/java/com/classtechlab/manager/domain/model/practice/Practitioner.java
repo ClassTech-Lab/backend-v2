@@ -1,7 +1,7 @@
 package com.classtechlab.manager.domain.model.practice;
 
 import com.classtechlab.manager.domain.model.organization.Organization;
-import com.classtechlab.manager.domain.model.organization.Type;
+import com.classtechlab.manager.domain.type.school.Type;
 
 import java.util.Collections;
 import java.util.Set;
