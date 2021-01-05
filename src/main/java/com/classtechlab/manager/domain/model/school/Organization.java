@@ -1,6 +1,5 @@
 package com.classtechlab.manager.domain.model.school;
 
-import com.classtechlab.manager.domain.model.school.managementBody.ManagementBody;
 import com.classtechlab.manager.domain.model.school.type.TypeId;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 
