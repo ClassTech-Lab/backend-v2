@@ -1,6 +1,5 @@
 package com.classtechlab.manager.domain.model.school;
 
-import com.classtechlab.manager.domain.model.school.type.Type;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 
 import java.util.Collections;
