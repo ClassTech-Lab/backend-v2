@@ -1,6 +1,6 @@
 package com.classtechlab.manager.domain.model.practice;
 
-import com.classtechlab.manager.domain.model.school.subject.SubjectId;
+import com.classtechlab.manager.domain.model.school.Subject;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -8,22 +8,22 @@ import java.util.Set;
 
 public class PracticeSubjects {
     private final PracticeId id;
-    private final Set<SubjectId> subjectIds;
+    private final Set<Subject> subjects;
 
-    public PracticeSubjects(final PracticeId id, final Set<SubjectId> subjectIds) {
+    public PracticeSubjects(final PracticeId id, final Set<Subject> subjects) {
         this.id = id;
-        this.subjectIds = Collections.unmodifiableSet(subjectIds);
+        this.subjects = Collections.unmodifiableSet(subjects);
     }
 
-    public PracticeSubjects add(final SubjectId subjectId) {
-        final Set<SubjectId> subjectIds = new HashSet<>(this.subjectIds);
-        subjectIds.add(subjectId);
-        return new PracticeSubjects(this.id, subjectIds);
+    public PracticeSubjects add(final Subject subject) {
+        final Set<Subject> subjects = new HashSet<>(this.subjects);
+        subjects.add(subject);
+        return new PracticeSubjects(this.id, subjects);
     }
 
-    public PracticeSubjects remove(final SubjectId subjectId) {
-        final Set<SubjectId> subjectIds = new HashSet<>(this.subjectIds);
-        subjectIds.remove(subjectId);
-        return new PracticeSubjects(this.id, subjectIds);
+    public PracticeSubjects remove(final Subject subject) {
+        final Set<Subject> subjects = new HashSet<>(this.subjects);
+        subjects.remove(subject);
+        return new PracticeSubjects(this.id, subjects);
     }
 }
