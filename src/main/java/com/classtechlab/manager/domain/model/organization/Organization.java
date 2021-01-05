@@ -1,7 +1,6 @@
 package com.classtechlab.manager.domain.model.organization;
 
 import com.classtechlab.manager.domain.type.item.Identifiable;
-import com.classtechlab.manager.domain.type.school.Type;
 
 import java.util.Collections;
 import java.util.HashSet;

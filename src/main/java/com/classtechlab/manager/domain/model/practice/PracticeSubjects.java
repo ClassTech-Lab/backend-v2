@@ -1,6 +1,6 @@
 package com.classtechlab.manager.domain.model.practice;
 
-import com.classtechlab.manager.domain.type.school.Subject;
+import com.classtechlab.manager.domain.model.organization.Subject;
 
 import java.util.Collections;
 import java.util.HashSet;
