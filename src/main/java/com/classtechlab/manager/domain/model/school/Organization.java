@@ -1,6 +1,6 @@
 package com.classtechlab.manager.domain.model.school;
 
-import com.classtechlab.manager.domain.model.school.type.TypeId;
+import com.classtechlab.manager.domain.model.school.type.Type;
 import com.classtechlab.manager.domain.type.item.Identifiable;
 
 import java.util.Collections;
@@ -12,31 +12,31 @@ import java.util.Set;
  */
 public class Organization implements Identifiable<Organization> {
     private final OrganizationId id;
-    private final Set<TypeId> typeIds;
+    private final Set<Type> types;
     private final ManagementBody managementBody;
 
-    private Organization(final OrganizationId id, final Set<TypeId> typeIds, final ManagementBody managementBody) {
+    private Organization(final OrganizationId id, final Set<Type> types, final ManagementBody managementBody) {
         this.id = id;
-        this.typeIds = Collections.unmodifiableSet(typeIds);
+        this.types = Collections.unmodifiableSet(types);
         this.managementBody = managementBody;
     }
 
-    public Organization(final Set<TypeId> typeIds, final ManagementBody managementBody) {
-        this(new OrganizationId(), typeIds, managementBody);
+    public Organization(final Set<Type> types, final ManagementBody managementBody) {
+        this(new OrganizationId(), types, managementBody);
     }
 
     private OrganizationId id() {
         return this.id;
     }
 
-    public Organization add(final TypeId typeId) {
-        final Set<TypeId> typeIds = new HashSet<>(this.typeIds);
+    public Organization add(final Type typeId) {
+        final Set<Type> typeIds = new HashSet<>(this.types);
         typeIds.add(typeId);
         return new Organization(this.id, typeIds, this.managementBody);
     }
 
-    boolean has(final TypeId typeId) {
-        return this.typeIds.contains(typeId);
+    boolean has(final Type typeId) {
+        return this.types.contains(typeId);
     }
 
     @Override

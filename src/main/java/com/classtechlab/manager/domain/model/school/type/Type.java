@@ -1,5 +1,7 @@
 package com.classtechlab.manager.domain.model.school.type;
 
+import com.classtechlab.manager.domain.type.name.Name;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,10 +10,10 @@ import java.util.Set;
  * 学校種別
  */
 public class Type {
-    private final TypeName name;
+    private final Name name;
     private final Set<Grade> grades;
 
-    private Type(final TypeName name, final Set<Grade> grades) {
+    private Type(final Name name, final Set<Grade> grades) {
         this.name = name;
         this.grades = Collections.unmodifiableSet(grades);
     }
