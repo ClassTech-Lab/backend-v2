@@ -1,8 +1,8 @@
 package com.classtechlab.manager.application.service.school;
 
 import com.classtechlab.manager.application.repository.school.SchoolSaveRepository;
-import com.classtechlab.manager.domain.model.school.Organization;
-import com.classtechlab.manager.domain.model.school.OrganizationId;
+import com.classtechlab.manager.domain.model.organization.Organization;
+import com.classtechlab.manager.domain.model.organization.OrganizationId;
 
 public class SchoolCreateService {
     private SchoolSaveRepository schoolSaveRepository;

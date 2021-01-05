@@ -4,8 +4,8 @@ import com.classtechlab.manager.application.service.practice.PracticeCreateServi
 import com.classtechlab.manager.application.service.school.SchoolCreateService;
 import com.classtechlab.manager.domain.model.practice.PracticeId;
 import com.classtechlab.manager.domain.model.practice.content.PracticeContent;
-import com.classtechlab.manager.domain.model.school.Organization;
-import com.classtechlab.manager.domain.model.school.OrganizationId;
+import com.classtechlab.manager.domain.model.organization.Organization;
+import com.classtechlab.manager.domain.model.organization.OrganizationId;
 
 public class PracticeCreateCoordinator {
     private PracticeCreateService practiceCreateService;
