@@ -11,27 +11,35 @@ import java.util.Set;
  */
 public class Organization implements Identifiable<Organization> {
     private final OrganizationId id;
-    private final Set<Type> types;
     private final ManagementBody managementBody;
+    private final Set<Type> types;
+    private final Set<Department> departments;
 
-    private Organization(final OrganizationId id, final Set<Type> types, final ManagementBody managementBody) {
+    private Organization(final OrganizationId id, final Set<Type> types, final Set<Department> departments, final ManagementBody managementBody) {
         this.id = id;
         this.types = Collections.unmodifiableSet(types);
+        this.departments = Collections.unmodifiableSet(departments);
         this.managementBody = managementBody;
     }
 
-    public Organization(final Set<Type> types, final ManagementBody managementBody) {
-        this(new OrganizationId(), types, managementBody);
+    public Organization(final Set<Type> types, final ManagementBody managementBody, final Set<Department> departments) {
+        this(new OrganizationId(), types, departments, managementBody);
     }
 
     private OrganizationId id() {
         return this.id;
     }
 
-    public Organization add(final Type typeId) {
-        final Set<Type> typeIds = new HashSet<>(this.types);
-        typeIds.add(typeId);
-        return new Organization(this.id, typeIds, this.managementBody);
+    public Organization add(final Type type) {
+        final Set<Type> types = new HashSet<>(this.types);
+        types.add(type);
+        return new Organization(this.id, types, this.departments, this.managementBody);
+    }
+
+    public Organization remove(final Type type) {
+        final Set<Type> types = new HashSet<>(this.types);
+        types.remove(type);
+        return new Organization(this.id, types, this.departments, this.managementBody);
     }
 
     boolean has(final Type typeId) {
