@@ -2,6 +2,7 @@ package com.classtechlab.manager.domain.model.organization;
 
 import com.classtechlab.manager.domain.type.name.Name;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ public class Grade {
 
     public Grade(final Name name, final Set<Subject> subjects) {
         this.name = name;
-        this.subjects = subjects;
+        this.subjects = Collections.unmodifiableSet(subjects);
     }
 
     public Grade add(final Subject subject) {
