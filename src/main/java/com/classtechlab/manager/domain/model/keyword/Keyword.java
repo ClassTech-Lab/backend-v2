@@ -50,7 +50,7 @@ public class Keyword implements Identifiable<Keyword> {
         private UUID id;
         private String name;
 
-        static Keyword.POJO parse(final Keyword keyword) {
+        static POJO parse(final Keyword keyword) {
             final Keyword.POJO pojo = new Keyword.POJO();
             pojo.id = keyword.id().uuid();
             pojo.name = keyword.name().string();
