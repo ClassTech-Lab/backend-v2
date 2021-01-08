@@ -29,4 +29,19 @@ public class Grade {
         grades.remove(subject);
         return new Grade(this.name, grades);
     }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        final Grade grade = (Grade) o;
+
+        return this.name.equals(grade.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }
