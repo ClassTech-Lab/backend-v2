@@ -19,7 +19,7 @@ public class Organization implements Identifiable<Organization> {
         this(new OrganizationId(), managementBody);
     }
 
-    private OrganizationId id() {
+    public OrganizationId id() {
         return this.id;
     }
 
