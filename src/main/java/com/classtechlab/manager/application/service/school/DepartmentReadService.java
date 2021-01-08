@@ -1,18 +1,18 @@
 package com.classtechlab.manager.application.service.school;
 
-import com.classtechlab.manager.application.repository.school.DepartmentReadRepository;
-import com.classtechlab.manager.domain.type.school.Department;
+import com.classtechlab.manager.application.repository.school.DepartmentsReadRepository;
+import com.classtechlab.manager.domain.type.school.Departments;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DepartmentReadService {
-    private final DepartmentReadRepository departmentReadRepository;
+    private final DepartmentsReadRepository departmentsReadRepository;
 
-    public DepartmentReadService(final DepartmentReadRepository departmentReadRepository) {
-        this.departmentReadRepository = departmentReadRepository;
+    public DepartmentReadService(final DepartmentsReadRepository departmentsReadRepository) {
+        this.departmentsReadRepository = departmentsReadRepository;
     }
 
-    public Department[] readAll() {
-        return this.departmentReadRepository.readAll();
+    public Departments readAll() {
+        return this.departmentsReadRepository.readAll();
     }
 }
