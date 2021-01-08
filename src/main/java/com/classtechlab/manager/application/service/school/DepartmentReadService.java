@@ -1,7 +1,7 @@
 package com.classtechlab.manager.application.service.school;
 
 import com.classtechlab.manager.application.repository.school.DepartmentReadRepository;
-import com.classtechlab.manager.domain.model.organization.Department;
+import com.classtechlab.manager.domain.type.school.Department;
 import org.springframework.stereotype.Service;
 
 @Service
