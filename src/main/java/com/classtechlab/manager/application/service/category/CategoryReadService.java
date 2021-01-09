@@ -19,6 +19,6 @@ public class CategoryReadService {
     }
 
     public Category readBy(final CategoryId id) {
-        return this.categoryReadRepository.readBy(id);
+        return this.categoryReadRepository.read(id);
     }
 }

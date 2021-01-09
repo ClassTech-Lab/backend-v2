@@ -20,7 +20,7 @@ public class CategoryReadDatasource implements CategoryReadRepository {
     }
 
     @Override
-    public Category readBy(final CategoryId id) {
+    public Category read(final CategoryId id) {
         return this.categoryMapper.findBy(id);
     }
 }

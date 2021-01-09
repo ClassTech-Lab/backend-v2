@@ -7,5 +7,5 @@ import com.classtechlab.manager.domain.type.item.Pack;
 public interface CategoryReadRepository {
     Pack<Category> readAll();
 
-    Category readBy(final CategoryId id);
+    Category read(final CategoryId id);
 }
