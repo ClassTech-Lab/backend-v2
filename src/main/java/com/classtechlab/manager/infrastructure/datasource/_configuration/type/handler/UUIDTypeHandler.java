@@ -1,4 +1,4 @@
-package com.classtechlab.manager._configuration.type.handler;
+package com.classtechlab.manager.infrastructure.datasource._configuration.type.handler;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
