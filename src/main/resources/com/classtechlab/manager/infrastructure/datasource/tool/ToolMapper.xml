@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
         [
+                <!ENTITY UUIDTypeHandler "com.classtechlab.manager._configuration.type.handler.UUIDTypeHandler">
                 <!ENTITY Tool "com.classtechlab.manager.domain.model.tool.Tool">
                 <!ENTITY ToolId "com.classtechlab.manager.domain.model.tool.ToolId">
                 ]
@@ -10,7 +11,7 @@
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.tool.ToolMapper">
     <insert id="insert" parameterType="&Tool;">
         INSERT INTO public.tool (id, name)
-        VALUES (#{id.value}, #{name.value});
+        VALUES (#{id.value, typeHandler=&UUIDTypeHandler;}, #{name.value});
     </insert>
     <select id="findAll" resultType="&Tool;">
         SELECT t.id   AS "id.value",
@@ -21,16 +22,16 @@
         SELECT t.id   AS "id.value",
                t.name AS "name.value"
         FROM public.tool t
-        WHERE t.id = #{value};
+        WHERE t.id = #{value, typeHandler=&UUIDTypeHandler;};
     </select>
     <update id="update" parameterType="&Tool;">
         UPDATE public.tool t
         SET name = #{name.value}
-        WHERE t.id = #{id.value};
+        WHERE t.id = #{id.value, typeHandler=&UUIDTypeHandler;};
     </update>
     <delete id="delete" parameterType="&Tool;">
         DELETE
         FROM public.tool t
-        WHERE t.id = #{id.value};
+        WHERE t.id = #{id.value, typeHandler=&UUIDTypeHandler;};
     </delete>
 </mapper>

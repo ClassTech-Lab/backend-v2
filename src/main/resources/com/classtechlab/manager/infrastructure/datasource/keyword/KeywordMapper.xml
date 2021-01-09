@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
         [
+                <!ENTITY UUIDTypeHandler "com.classtechlab.manager._configuration.type.handler.UUIDTypeHandler">
                 <!ENTITY Keyword "com.classtechlab.manager.domain.model.keyword.Keyword">
                 <!ENTITY KeywordId "com.classtechlab.manager.domain.model.keyword.KeywordId">
                 ]
@@ -10,7 +11,7 @@
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.keyword.KeywordMapper">
     <insert id="insert" parameterType="&Keyword;">
         INSERT INTO public.keyword (id, name)
-        VALUES (#{id.value}, #{name.value});
+        VALUES (#{id.value, typeHandler=&UUIDTypeHandler;}, #{name.value});
     </insert>
     <select id="findAll" resultType="&Keyword;">
         SELECT k.id   AS "id.value",
@@ -21,16 +22,16 @@
         SELECT k.id   AS "id.value",
                k.name AS "name.value"
         FROM public.keyword k
-        WHERE k.id = #{value};
+        WHERE k.id = #{value, typeHandler=&UUIDTypeHandler;};
     </select>
     <update id="update" parameterType="&Keyword;">
         UPDATE public.keyword k
         SET name = #{name.value}
-        WHERE k.id = #{id.value};
+        WHERE k.id = #{id.value, typeHandler=&UUIDTypeHandler;};
     </update>
     <delete id="delete">
         DELETE
         FROM public.keyword k
-        WHERE k.id = #{id.value};
+        WHERE k.id = #{id.value, typeHandler=&UUIDTypeHandler;};
     </delete>
 </mapper>

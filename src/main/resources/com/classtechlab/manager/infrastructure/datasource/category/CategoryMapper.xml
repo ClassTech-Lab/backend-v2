@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
         [
+                <!ENTITY UUIDTypeHandler "com.classtechlab.manager._configuration.type.handler.UUIDTypeHandler">
                 <!ENTITY Category "com.classtechlab.manager.domain.model.category.Category">
                 <!ENTITY CategoryId "com.classtechlab.manager.domain.model.category.CategoryId">
                 ]
@@ -10,7 +11,7 @@
 <mapper namespace="com.classtechlab.manager.infrastructure.datasource.category.CategoryMapper">
     <insert id="insert" parameterType="&Category;">
         INSERT INTO public.category (id, name)
-        VALUES (#{id.value}, #{name.value});
+        VALUES (#{id.value, typeHandler=&UUIDTypeHandler;}, #{name.value});
     </insert>
     <select id="findAll" resultType="&Category;">
         SELECT c.id   AS "id.value",
@@ -21,16 +22,16 @@
         SELECT c.id   AS "id.value",
                c.name AS "name.value"
         FROM public.category c
-        WHERE c.id = #{value};
+        WHERE c.id = #{value, typeHandler=&UUIDTypeHandler;};
     </select>
     <update id="update" parameterType="&Category;">
         UPDATE public.category c
         SET name = #{name.value}
-        WHERE c.id = #{id.value};
+        WHERE c.id = #{id.value, typeHandler=&UUIDTypeHandler;};
     </update>
     <delete id="delete" parameterType="&Category;">
         DELETE
         FROM public.category c
-        WHERE c.id = #{id.value};
+        WHERE c.id = #{id.value, typeHandler=&UUIDTypeHandler;};
     </delete>
 </mapper>

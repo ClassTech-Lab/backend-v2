@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeHandlers>
-        <typeHandler handler="com.classtechlab.manager._configuration.type.handler.UUIDTypeHandler"/>
+        <typeHandler javaType="java.util.UUID" handler="com.classtechlab.manager._configuration.type.handler.UUIDTypeHandler"/>
     </typeHandlers>
     <mappers>
         <mapper resource="com/classtechlab/manager/infrastructure/datasource/tool/ToolMapper.xml"/>
