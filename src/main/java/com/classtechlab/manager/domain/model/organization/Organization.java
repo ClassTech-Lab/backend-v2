@@ -1,7 +1,7 @@
 package com.classtechlab.manager.domain.model.organization;
 
 import com.classtechlab.manager.domain.type.item.Identifiable;
-import com.classtechlab.manager.domain.type.school.ManagementBody;
+import com.classtechlab.manager.domain.model.school.ManagementBody;
 
 /**
  * 運営組織

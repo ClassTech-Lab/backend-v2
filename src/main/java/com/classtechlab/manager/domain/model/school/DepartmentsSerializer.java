@@ -1,4 +1,4 @@
-package com.classtechlab.manager.domain.type.school;
+package com.classtechlab.manager.domain.model.school;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JavaType;

@@ -1,7 +1,7 @@
 package com.classtechlab.manager.presentation.controller.school;
 
 import com.classtechlab.manager.application.service.school.DepartmentReadService;
-import com.classtechlab.manager.domain.type.school.Departments;
+import com.classtechlab.manager.domain.model.school.Departments;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
