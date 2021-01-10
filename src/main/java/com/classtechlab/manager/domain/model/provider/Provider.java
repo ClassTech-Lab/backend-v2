@@ -22,7 +22,7 @@ public class Provider implements Identifiable<Provider> {
         this(new ProviderId(), name);
     }
 
-    private ProviderId id() {
+    public ProviderId id() {
         return this.id;
     }
 
