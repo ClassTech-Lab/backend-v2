@@ -8,7 +8,7 @@ public class OrganizationSaveService {
     private OrganizationSaveRepository organizationSaveRepository;
 
     public OrganizationId create(final Organization organization) {
-        this.organizationSaveRepository.save(organization);
+        this.organizationSaveRepository.create(organization);
         return organization.id();
     }
 }
