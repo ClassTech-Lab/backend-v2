@@ -1,4 +1,4 @@
-package com.classtechlab.manager.application.repository.school;
+package com.classtechlab.manager.application.repository.organization;
 
 import com.classtechlab.manager.domain.model.organization.Organization;
 import com.classtechlab.manager.domain.model.organization.OrganizationId;

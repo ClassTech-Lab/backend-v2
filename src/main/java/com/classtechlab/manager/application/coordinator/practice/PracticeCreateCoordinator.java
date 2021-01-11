@@ -1,7 +1,7 @@
 package com.classtechlab.manager.application.coordinator.practice;
 
 import com.classtechlab.manager.application.service.practice.PracticeCreateService;
-import com.classtechlab.manager.application.service.school.OrganizationSaveService;
+import com.classtechlab.manager.application.service.organization.OrganizationSaveService;
 import com.classtechlab.manager.domain.model.practice.PracticeId;
 import com.classtechlab.manager.domain.model.practice.content.PracticeContent;
 import com.classtechlab.manager.domain.model.organization.Organization;
