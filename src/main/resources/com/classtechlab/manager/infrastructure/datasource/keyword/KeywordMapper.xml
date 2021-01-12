@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
         [
-                <!ENTITY UUIDTypeHandler "com.classtechlab.manager._configuration.type.handler.UUIDTypeHandler">
+                <!ENTITY UUIDTypeHandler "com.classtechlab.manager.infrastructure.datasource._configuration.type.handler.UUIDTypeHandler">
                 <!ENTITY Keyword "com.classtechlab.manager.domain.model.keyword.Keyword">
                 <!ENTITY KeywordId "com.classtechlab.manager.domain.model.keyword.KeywordId">
                 ]
