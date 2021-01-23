@@ -6,6 +6,8 @@ import com.classtechlab.manager.domain.model.organization.OrganizationId;
 import com.classtechlab.manager.domain.type.item.Pack;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Repository
 public class OrganizationReadDatasource implements OrganizationReadRepository {
     private final OrganizationMapper organizationMapper;
@@ -16,11 +18,13 @@ public class OrganizationReadDatasource implements OrganizationReadRepository {
 
     @Override
     public Pack<Organization> readAll() {
-        return new Pack<>(this.organizationMapper.findAll());
+        return new Pack<>(new ArrayList<Organization>());
+//        return new Pack<>(this.organizationMapper.findAll());
     }
 
     @Override
     public Organization read(final OrganizationId id) {
-        return this.organizationMapper.findBy(id);
+        return null;
+//        return this.organizationMapper.findBy(id);
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        [
+                <!ENTITY UUIDTypeHandler "com.classtechlab.manager.infrastructure.datasource._configuration.type.handler.UUIDTypeHandler">
+                <!ENTITY Organization "com.classtechlab.manager.domain.model.organization.Organization">
+                <!ENTITY OrganizationId "com.classtechlab.manager.domain.model.organization.OrganizationId">
+                ]
+        >
+<mapper namespace="com.classtechlab.manager.infrastructure.datasource.organization.OrganizationMapper">
+    <resultMap id="organization" type="&Organization;">
+
+    </resultMap>
+    <insert id="insert" parameterType="&Organization;">
+        INSERT INTO public.organization (id, management_body_name, name)
+        VALUES (#{id.value, typeHandler=&UUIDTypeHandler;}, #{managementBody.name.value}, #{name.value});
+    </insert>
+<!--    <select id="findAll" resultType="&Organization;">-->
+<!--        SELECT o.id   AS "id.value",-->
+<!--               o.name AS "name.value"-->
+<!--        FROM public.organization o;-->
+<!--    </select>-->
+<!--    <select id="findBy" parameterType="&OrganizationId;" resultType="&Organization;">-->
+<!--        SELECT o.id   AS "id.value",-->
+<!--               o.name AS "name.value"-->
+<!--        FROM public.organization o-->
+<!--        WHERE o.id = #{value, typeHandler=&UUIDTypeHandler;};-->
+<!--    </select>-->
+<!--    <update id="update" parameterType="&Organization;">-->
+<!--        UPDATE public.organization o-->
+<!--        SET name = #{name.value}-->
+<!--        WHERE o.id = #{id.value, typeHandler=&UUIDTypeHandler;};-->
+<!--    </update>-->
+<!--    <delete id="delete">-->
+<!--        DELETE-->
+<!--        FROM public.organization o-->
+<!--        WHERE o.id = #{id.value, typeHandler=&UUIDTypeHandler;};-->
+<!--    </delete>-->
+</mapper>
